@@ -41,4 +41,11 @@ public class Usuario extends Persona implements Serializable {
      private List<Compra> misCompras;
      //entidad inversa
 
+
+    public Usuario(String codigo, String nombre, String email, String password, String direccion, String telefono, CuentaPremium miCuentaPremium) {
+        super(codigo, nombre, email, password);
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.miCuentaPremium = miCuentaPremium;
+    }
 }

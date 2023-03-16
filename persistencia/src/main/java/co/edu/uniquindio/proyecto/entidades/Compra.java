@@ -40,7 +40,13 @@ public class Compra implements Serializable {
     @OneToMany(mappedBy = "miCompra")
     private List<DetalleCompra> misDetalleCompras;
 
-
+    public Compra(String codigo, Date fechaCreacion, Double valorTotal, MedioDePago medioDePago, Usuario miUsuario) {
+        this.codigo = codigo;
+        this.fechaCreacion = fechaCreacion;
+        this.valorTotal = valorTotal;
+        this.medioDePago = medioDePago;
+        this.miUsuario = miUsuario;
+    }
 }
 
 
