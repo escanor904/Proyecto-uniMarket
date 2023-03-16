@@ -15,7 +15,6 @@ import java.io.Serializable;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
-
 public class Persona implements Serializable  {
     @Id
     @EqualsAndHashCode.Include
@@ -31,9 +30,5 @@ public class Persona implements Serializable  {
     @Column(nullable = false,length = 20)
     private String password;
 
-    public Persona(String nombre, String email, String password) {
-        this.nombre = nombre;
-        this.email = email;
-        this.password = password;
-    }
+
 }

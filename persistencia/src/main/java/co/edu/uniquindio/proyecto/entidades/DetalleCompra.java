@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -18,10 +19,15 @@ import java.util.List;
 public class DetalleCompra implements Serializable {
     @Id
     @EqualsAndHashCode.Include
+    @Column(length = 10)
     private String codigo;
 
+    @Positive
+    @Column(nullable = false)
     private Integer unidades;
 
+
+    @Column(nullable = false)
     private Double precioProducto;
 
     @ManyToOne

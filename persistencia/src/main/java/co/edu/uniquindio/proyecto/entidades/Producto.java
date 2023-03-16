@@ -16,8 +16,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-
-
 public class Producto implements Serializable {
 
     @Id
@@ -66,5 +64,13 @@ public class Producto implements Serializable {
     @ManyToOne
     private DetalleCompra miDetalleCompra;
 
-
+    public Producto(String codigo, String nombre, String descripcion, Double precio, Date fechaCreacion, Date fechaLimite, Integer unidades) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaLimite = fechaLimite;
+        this.unidades = unidades;
+    }
 }

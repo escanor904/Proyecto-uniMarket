@@ -18,6 +18,7 @@ import java.io.Serializable;
 public class Imagen implements Serializable {
 
     @Id
+    @Column(length = 10)
     @EqualsAndHashCode.Include
     private String codigo;
 

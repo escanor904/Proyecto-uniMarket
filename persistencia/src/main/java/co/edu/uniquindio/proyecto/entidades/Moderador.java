@@ -12,7 +12,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 public class Moderador extends Persona implements Serializable {
 
     @OneToMany(mappedBy = "miModerador")

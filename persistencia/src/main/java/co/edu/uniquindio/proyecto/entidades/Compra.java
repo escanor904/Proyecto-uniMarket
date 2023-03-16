@@ -18,11 +18,17 @@ import java.util.List;
 public class Compra implements Serializable {
 
     @Id
+    @Column(length = 10)
     @EqualsAndHashCode.Include
     private String codigo;
 
+
+    @Column(nullable = false,columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date fechaCreacion;
 
+
+    @Column(nullable = false)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Double valorTotal;
 
     @Enumerated(EnumType.STRING)
