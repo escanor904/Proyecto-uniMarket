@@ -13,11 +13,10 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 
-
-public class Persona implements Serializable {
+public class Persona implements Serializable  {
     @Id
     @EqualsAndHashCode.Include
     @Column(length = 10)
