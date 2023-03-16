@@ -30,4 +30,14 @@ public class Usuario extends Persona implements Serializable {
      @OneToMany(mappedBy = "miUsuario")
      private List<Favorito> misFavoritos;
 
+     @OneToMany(mappedBy = "miUsuario")
+     private List<Comentario> misComentarios;
+
+     @OneToOne(mappedBy = "miUsuario")
+     private CuentaPremium miCuentaPremium;
+
+     @OneToMany(mappedBy = "miUsuario")
+     private List<Compra> misCompras;
+     //entidad inversa
+
 }

@@ -42,10 +42,6 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     private Integer unidades;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private EstadoProducto estadoProducto;
-
     @ManyToOne
     private Usuario miUsuario;
     //entidad propietaria
@@ -60,5 +56,15 @@ public class Producto implements Serializable {
     @ManyToOne
     private Categoria miCategoria;
     //entidad Propietaria es el producto porque para hacer un producto necesitamos una categoria
+
+    @ManyToOne
+    private Autorizacion miAutorizacion;
+
+    @OneToMany(mappedBy = "miProducto")
+    private List<Comentario> miComentario;
+
+    @ManyToOne
+    private DetalleCompra miDetalleCompra;
+
 
 }
