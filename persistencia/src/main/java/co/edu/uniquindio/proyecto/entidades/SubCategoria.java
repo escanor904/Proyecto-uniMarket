@@ -19,6 +19,7 @@ public class SubCategoria implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @Column(length = 10)
     private String codigo;
     @Column(nullable = false,length = 100)
     private String nombre;

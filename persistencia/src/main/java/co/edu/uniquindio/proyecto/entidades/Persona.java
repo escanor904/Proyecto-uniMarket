@@ -1,10 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +12,8 @@ import java.io.Serializable;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
-
+@ToString
+@AllArgsConstructor
 public class Persona implements Serializable  {
     @Id
     @EqualsAndHashCode.Include
@@ -31,9 +29,5 @@ public class Persona implements Serializable  {
     @Column(nullable = false,length = 20)
     private String password;
 
-    public Persona(String nombre, String email, String password) {
-        this.nombre = nombre;
-        this.email = email;
-        this.password = password;
-    }
+
 }

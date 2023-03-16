@@ -12,13 +12,13 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 public class Moderador extends Persona implements Serializable {
 
     @OneToMany(mappedBy = "miModerador")
     private List<Autorizacion> misAutorizaciones;
 
-
-
-
+    public Moderador(String codigo, String nombre, String email, String password, List<Autorizacion> misAutorizaciones) {
+        super(codigo, nombre, email, password);
+        this.misAutorizaciones = misAutorizaciones;
+    }
 }

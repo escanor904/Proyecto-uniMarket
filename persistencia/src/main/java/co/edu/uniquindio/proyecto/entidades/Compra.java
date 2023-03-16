@@ -18,11 +18,17 @@ import java.util.List;
 public class Compra implements Serializable {
 
     @Id
+    @Column(length = 10)
     @EqualsAndHashCode.Include
     private String codigo;
 
+
+    @Column(nullable = false,columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date fechaCreacion;
 
+
+    @Column(nullable = false)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Double valorTotal;
 
     @Enumerated(EnumType.STRING)
@@ -34,7 +40,13 @@ public class Compra implements Serializable {
     @OneToMany(mappedBy = "miCompra")
     private List<DetalleCompra> misDetalleCompras;
 
-
+    public Compra(String codigo, Date fechaCreacion, Double valorTotal, MedioDePago medioDePago, Usuario miUsuario) {
+        this.codigo = codigo;
+        this.fechaCreacion = fechaCreacion;
+        this.valorTotal = valorTotal;
+        this.medioDePago = medioDePago;
+        this.miUsuario = miUsuario;
+    }
 }
 
 

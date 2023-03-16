@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.bytebuddy.implementation.bind.annotation.Empty;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -18,8 +19,10 @@ import java.io.Serializable;
 public class CuentaPremium implements Serializable {
     @Id
     @EqualsAndHashCode.Include
+    @Column(length = 10)
     private String codigo;
 
+    @Column(length = 100,nullable = false)
     private String nombre;
 
     @OneToOne
