@@ -1,10 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Producto implements Serializable {
 
     @Id
@@ -55,22 +53,21 @@ public class Producto implements Serializable {
     private Categoria miCategoria;
     //entidad Propietaria es el producto porque para hacer un producto necesitamos una categoria
 
-    @ManyToOne
-    private Autorizacion miAutorizacion;
-
     @OneToMany(mappedBy = "miProducto")
     private List<Comentario> miComentario;
 
-    @ManyToOne
-    private DetalleCompra miDetalleCompra;
+    @OneToMany(mappedBy = "miProducto")
+    private List<DetalleCompra> misDetalleCompras;
 
-    public Producto(String codigo, String nombre, String descripcion, Double precio, Date fechaCreacion, Date fechaLimite, Integer unidades) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaLimite = fechaLimite;
-        this.unidades = unidades;
-    }
+
+    @OneToMany(mappedBy = "miProducto")
+    private List<DetalleDeProducto> misDetalleProductos;
+
+    @OneToMany(mappedBy = "miProducto")
+    private List<ProductoModerador> misProductosModerador;
+
+
+
+//se debe crear la relacion con el moderador
+
 }

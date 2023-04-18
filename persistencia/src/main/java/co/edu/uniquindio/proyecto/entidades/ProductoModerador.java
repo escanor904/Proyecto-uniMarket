@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,30 +8,32 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Autorizacion implements Serializable {
+public class ProductoModerador implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    @Column(length = 10)
     private String codigo;
+    private String motivo;
+
+    @Column(nullable = false)
+    private Date fecha;
+
 
     @ManyToOne
     private Moderador miModerador;
-    //entidad propietaria
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private EstadoProducto estadoProducto;
 
-    @OneToMany(mappedBy = "miAutorizacion")
-    private List<Producto> misProductos;
+    @ManyToOne
+    private Producto miProducto;
 
+    @ManyToOne
+    private Estado miEstado;
 
 }

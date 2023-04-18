@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,40 +9,35 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@ToString(callSuper = true)
 public class Usuario extends Persona implements Serializable {
 
 
     @Column(nullable = false,length = 150)
     private String direccion;
 
-    @Column(nullable = false,length = 20)
+    @Column(length = 20)
     private String telefono;
 
      @OneToMany(mappedBy = "miUsuario")
      private List<Producto> misProductos ;
      //entidad inversa
 
-
+     @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")
      private List<Favorito> misFavoritos;
 
+     @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")
      private List<Comentario> misComentarios;
 
-     @OneToOne(mappedBy = "miUsuario")
-     private CuentaPremium miCuentaPremium;
 
+     @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")
      private List<Compra> misCompras;
      //entidad inversa
 
 
-    public Usuario(String codigo, String nombre, String email, String password, String direccion, String telefono, CuentaPremium miCuentaPremium) {
-        super(codigo, nombre, email, password);
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.miCuentaPremium = miCuentaPremium;
-    }
+
 }

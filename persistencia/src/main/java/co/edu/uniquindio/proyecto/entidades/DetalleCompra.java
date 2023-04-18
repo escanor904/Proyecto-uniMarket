@@ -33,8 +33,8 @@ public class DetalleCompra implements Serializable {
     @ManyToOne
     private Compra miCompra;
 
-    @OneToMany(mappedBy = "miDetalleCompra")
-    private List<Producto> misProductos;
+    @ManyToOne
+    private Producto miProducto;
 
 
 }

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,21 +15,17 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class DetalleDeProducto implements Serializable {
+public class Estado implements Serializable {
 
-    @EqualsAndHashCode.Include
     @Id
-    @Column(length = 10)
     private String codigo;
 
 
-    @Column(length = 100,nullable = false)
+    @Column(nullable = false,length = 100)
     private String nombre;
 
-    @ManyToOne
-    private Producto miProducto;
+    @OneToMany(mappedBy = "miEstado")
+    private List<ProductoModerador> misProductosModerador;
 
-    @OneToMany(mappedBy = "miDetalleDeProducto")
-    private List<OpcionDetalleProducto>misOpcionesDetalleProductos;
 
 }
