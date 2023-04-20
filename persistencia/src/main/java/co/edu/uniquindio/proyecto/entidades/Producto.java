@@ -38,35 +38,43 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     private Integer unidades;
 
+    @ToString.Exclude
     @ManyToOne
     private Usuario miUsuario;
     //entidad propietaria
 
-    @OneToMany(mappedBy ="miUsuario")
-    private List<Favorito> misFavoritos;
-    //entidad inversa
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "miProducto")
     private List<Imagen> misImagens;
 
+    @ToString.Exclude
     @ManyToOne
     private Categoria miCategoria;
     //entidad Propietaria es el producto porque para hacer un producto necesitamos una categoria
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "miProducto")
     private List<Comentario> miComentario;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "miProducto")
     private List<DetalleCompra> misDetalleCompras;
 
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "miProducto")
     private List<DetalleDeProducto> misDetalleProductos;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "miProducto")
     private List<ProductoModerador> misProductosModerador;
 
 
+    //estos son los usuarios que tienen el producto en favoritos
+    //entidad inversa entre usuario y producto
+    @ManyToMany(mappedBy = "productosFavoritos")
+    private List<Usuario> usuariosFavoritos;
 
 //se debe crear la relacion con el moderador
 

@@ -20,13 +20,15 @@ public class Usuario extends Persona implements Serializable {
     @Column(length = 20)
     private String telefono;
 
+     @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")
      private List<Producto> misProductos ;
      //entidad inversa
 
-     @ToString.Exclude
-     @OneToMany(mappedBy = "miUsuario")
-     private List<Favorito> misFavoritos;
+
+     //entidad propietaria entre usuario producto
+    @ManyToMany
+     private List<Producto> productosFavoritos;
 
      @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")

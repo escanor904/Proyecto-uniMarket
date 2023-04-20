@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +12,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class SubCategoria implements Serializable {
 
     @Id
@@ -24,6 +22,7 @@ public class SubCategoria implements Serializable {
     @Column(nullable = false,length = 100)
     private String nombre;
 
+    @ToString.Exclude
     @ManyToOne
     private Categoria miCategoria;
     //entidad propietaria

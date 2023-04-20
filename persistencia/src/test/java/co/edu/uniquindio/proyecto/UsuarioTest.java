@@ -5,7 +5,6 @@ import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
-import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,8 +30,7 @@ public class UsuarioTest {
     @Autowired
     private CategoriaRepo categoriaRepo;
 
-    @Autowired
-    private ProductoRepo productoRepo;
+
 
 
 
@@ -164,9 +162,27 @@ public class UsuarioTest {
     public void listarProductosDeUnUsuario(){
 
 
-       // List<Producto>misProductos = usuarioRepo.obtenerProductosUsuarioPorCodigo("904");
-        //misProductos.forEach(p -> System.out.println(p));
+        List<Producto>misProductos = usuarioRepo.obtenerProductosUsuarioPorCodigo("904");
+        System.out.println(misProductos);
+
     }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void obtenerFavoritos(){
+
+
+        List<Producto>misProductos = usuarioRepo.obtenerFavoritosPorCorreo("lian@gmail.com");
+
+        Assertions.assertEquals(2,misProductos.size());
+
+    }
+
+
+
+
+
+
 
 
 

@@ -4,7 +4,6 @@ import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -24,6 +23,11 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
     @Query("select u.misProductos from Usuario u where u.codigo = :codigo")
     List<Producto> obtenerProductosUsuarioPorCodigo(String codigo);
+
+    //usamos IN cuando queremos mescalar un objeto con una lista de cosas
+    @Query("select p from Usuario  u, IN (u.productosFavoritos) p where u.email = :email")
+    List<Producto> obtenerFavoritosPorCorreo(String email);
+
 
 
     //con inferencia de datos gracias a el framework de spring que es JPArepository
