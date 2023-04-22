@@ -73,6 +73,7 @@ public class Producto implements Serializable {
 
     //estos son los usuarios que tienen el producto en favoritos
     //entidad inversa entre usuario y producto
+    @ToString.Exclude
     @ManyToMany(mappedBy = "productosFavoritos")
     private List<Usuario> usuariosFavoritos;
 

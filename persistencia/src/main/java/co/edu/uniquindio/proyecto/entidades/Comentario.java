@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +14,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class Comentario implements Serializable {
     @Id
     @Column(length = 10)
@@ -30,10 +28,12 @@ public class Comentario implements Serializable {
     @Column(nullable = false,columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date fechaCreacion;
 
+    @ToString.Exclude
     @ManyToOne
     private Producto miProducto;
     //entidad propietaria
 
+    @ToString.Exclude
     @ManyToOne
     private Usuario miUsuario;
 

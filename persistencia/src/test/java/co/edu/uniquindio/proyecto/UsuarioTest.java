@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto;
 
 
 import co.edu.uniquindio.proyecto.entidades.Categoria;
+import co.edu.uniquindio.proyecto.entidades.Comentario;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
@@ -17,6 +18,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.jdbc.Sql;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @DataJpaTest
@@ -173,8 +176,66 @@ public class UsuarioTest {
 
 
         List<Producto>misProductos = usuarioRepo.obtenerFavoritosPorCorreo("lian@gmail.com");
+        misProductos.forEach(System.out::println);
+        //Assertions.assertEquals(2,misProductos.size());
+
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void obtenerProductosPublicados(){
+
+
+        List<Producto>misProductos = usuarioRepo.obtenerProductosUsuarioPorCodigoj("904");
 
         Assertions.assertEquals(2,misProductos.size());
+
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void obtenerComentariosDeUsuaroi(){
+
+
+        List<Comentario> comentarios= usuarioRepo.obtenerComentarioDeUsuarioPorCodigo("908");
+        Assertions.assertEquals(3,comentarios.size());
+
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void listarUsuarioProductoTest(){
+
+
+        List<Object[]> respuesta= usuarioRepo.listarUsuariosYProductos();
+
+       for (Object[] objeto:respuesta){
+           System.out.println(objeto[0]+"-----"+objeto[1]);
+       }
+
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void buscarUsuarioPorCorreo(){
+        Optional<Usuario> usuario = usuarioRepo.findByEmail("lian@gmail.com");
+        Assertions.assertNotNull(usuario);
+
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void buscarUsuarioPorUsername(){
+        Optional<Usuario> usuario = usuarioRepo.findByUsername("unimario");
+        Assertions.assertNotNull(usuario);
+
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void buscarUsuarioPorCedula(){
+        Optional<Usuario> usuario = usuarioRepo.findByCedula("1023452133");
+        Assertions.assertNotNull(usuario);
 
     }
 

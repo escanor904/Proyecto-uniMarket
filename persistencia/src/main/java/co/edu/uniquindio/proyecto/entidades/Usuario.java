@@ -1,8 +1,10 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,12 +15,10 @@ import java.util.List;
 @ToString(callSuper = true)
 public class Usuario extends Persona implements Serializable {
 
-
-    @Column(nullable = false,length = 150)
-    private String direccion;
-
-    @Column(length = 20)
-    private String telefono;
+    @Column(nullable = false,length = 20,unique = true)
+    private String username;
+    @Column(nullable = false,length = 20)
+    private String password;
 
      @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")
@@ -38,7 +38,15 @@ public class Usuario extends Persona implements Serializable {
      @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")
      private List<Compra> misCompras;
-     //entidad inversa
+
+    public Usuario(String codigo, @Length(max = 150) String nombre, String cedula, @Email String email, String direccion, String telefono, String username, String password) {
+        super(codigo, nombre, cedula, email, direccion, telefono);
+        this.username = username;
+        this.password = password;
+
+    }
+
+    //entidad inversa
 
 
 
