@@ -1,6 +1,5 @@
 package co.edu.uniquindio.proyecto;
 
-import co.edu.uniquindio.proyecto.DTO.ProductoValido;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
@@ -18,10 +17,12 @@ import java.util.List;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class productoTest {
+public class ProductoTest {
     @Autowired
     private ProductoRepo productoRepo;
 
+
+    //------------------------------CONSULTAS----------------------------------------------------------
     @Test
     @Sql("classpath:usuarios.sql")
     public void listarProductos(){

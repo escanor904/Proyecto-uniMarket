@@ -26,12 +26,17 @@ public interface CategoriaRepo extends JpaRepository<Categoria,String> {
     List<Categoria> obtenerCategoriasPorCodigo(String codigo);
 
 
+    @Query("select c from Categoria c where c.codigo = :codigo")
+    Categoria obtenerCategoriaPorCodigo(String codigo);
 
 
-    //---------------------------------Consultas inferidas por SpringBoot----------------------------------------
+
+ //---------------------------------Consultas inferidas por SpringBoot----------------------------------------
 
 
     //con inferencia de datos gracias a el framework de spring que es JPArepository
     List<Categoria>findAllByNombreContains(String nombre);
     Page<Categoria> findAllBy(Pageable paginador);
+
+
 }

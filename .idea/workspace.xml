@@ -6,17 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bc8b336f-cb2d-4c7f-a277-02412142f29a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Comentario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Compra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/DetalleCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/DetalleCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Producto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/ProductoModerador.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/ProductoModerador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/CompraRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/CompraRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/ProductoRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/ProductoRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/UsuarioRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/UsuarioRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/CategoriaRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/CategoriaRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/CategoriaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/CategoriaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/CompraTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/CompraTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/productoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/productoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/SubCategoriaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/SubCategoriaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/UsuarioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/UsuarioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/productoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/ProductoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,8 +99,8 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.productoTest.listarProductosMasAgregadosFavoritos">
-    <configuration name="CompraTest.listarCompras" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SubCategoriaTest">
+    <configuration name="CategoriaTest.obtenerCategoriasYSubCategorias" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="persistencia" />
       <extension name="coverage">
         <pattern>
@@ -114,14 +109,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.CompraTest" />
-      <option name="METHOD_NAME" value="listarCompras" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.CategoriaTest" />
+      <option name="METHOD_NAME" value="obtenerCategoriasYSubCategorias" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompraTest.listarComprasConDetalle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SubCategoriaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="persistencia" />
       <extension name="coverage">
         <pattern>
@@ -130,14 +125,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.CompraTest" />
-      <option name="METHOD_NAME" value="listarComprasConDetalle" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.SubCategoriaTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SubCategoriaTest.actualizarSubcategoria" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="persistencia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.proyecto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.SubCategoriaTest" />
+      <option name="METHOD_NAME" value="actualizarSubcategoria" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UsuarioTest.listarProductosDeUnUsuario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SubCategoriaTest.obtenerSubCategoriasConCategorias" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="persistencia" />
       <extension name="coverage">
         <pattern>
@@ -146,14 +156,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.UsuarioTest" />
-      <option name="METHOD_NAME" value="listarProductosDeUnUsuario" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.SubCategoriaTest" />
+      <option name="METHOD_NAME" value="obtenerSubCategoriasConCategorias" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UsuarioTest.resgistraUsuario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SubCategoriaTest.obtenerSubCategoriasPorCategoria2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="persistencia" />
       <extension name="coverage">
         <pattern>
@@ -162,43 +172,27 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.UsuarioTest" />
-      <option name="METHOD_NAME" value="resgistraUsuario" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="productoTest.listarProductosMasAgregadosFavoritos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="persistencia" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.proyecto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.productoTest" />
-      <option name="METHOD_NAME" value="listarProductosMasAgregadosFavoritos" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.SubCategoriaTest" />
+      <option name="METHOD_NAME" value="obtenerSubCategoriasPorCategoria2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CompraTest.listarCompras" />
-      <item itemvalue="JUnit.CompraTest.listarComprasConDetalle" />
-      <item itemvalue="JUnit.UsuarioTest.listarProductosDeUnUsuario" />
-      <item itemvalue="JUnit.UsuarioTest.resgistraUsuario" />
-      <item itemvalue="JUnit.productoTest.listarProductosMasAgregadosFavoritos" />
+      <item itemvalue="JUnit.CategoriaTest.obtenerCategoriasYSubCategorias" />
+      <item itemvalue="JUnit.SubCategoriaTest" />
+      <item itemvalue="JUnit.SubCategoriaTest.actualizarSubcategoria" />
+      <item itemvalue="JUnit.SubCategoriaTest.obtenerSubCategoriasConCategorias" />
+      <item itemvalue="JUnit.SubCategoriaTest.obtenerSubCategoriasPorCategoria2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.productoTest.listarProductosMasAgregadosFavoritos" />
-        <item itemvalue="JUnit.UsuarioTest.resgistraUsuario" />
-        <item itemvalue="JUnit.UsuarioTest.listarProductosDeUnUsuario" />
-        <item itemvalue="JUnit.CompraTest.listarCompras" />
-        <item itemvalue="JUnit.CompraTest.listarComprasConDetalle" />
+        <item itemvalue="JUnit.SubCategoriaTest" />
+        <item itemvalue="JUnit.SubCategoriaTest.actualizarSubcategoria" />
+        <item itemvalue="JUnit.SubCategoriaTest.obtenerSubCategoriasConCategorias" />
+        <item itemvalue="JUnit.CategoriaTest.obtenerCategoriasYSubCategorias" />
+        <item itemvalue="JUnit.SubCategoriaTest.obtenerSubCategoriasPorCategoria2" />
       </list>
     </recent_temporary>
   </component>
@@ -240,7 +234,8 @@
       <workItem from="1682210543442" duration="2623000" />
       <workItem from="1682217510812" duration="1669000" />
       <workItem from="1682222159004" duration="4746000" />
-      <workItem from="1682226966365" duration="9497000" />
+      <workItem from="1682226966365" duration="9716000" />
+      <workItem from="1682281250413" duration="5569000" />
     </task>
     <task id="LOCAL-00001" summary="se agregaron consultas">
       <created>1682231811881</created>
@@ -249,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682231811881</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="se cambiaron variables y se agregan mas consultas">
+      <created>1682236702136</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682236702136</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +270,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="se agregaron consultas" />
-    <option name="LAST_COMMIT_MESSAGE" value="se agregaron consultas" />
+    <MESSAGE value="se cambiaron variables y se agregan mas consultas" />
+    <option name="LAST_COMMIT_MESSAGE" value="se cambiaron variables y se agregan mas consultas" />
   </component>
 </project>

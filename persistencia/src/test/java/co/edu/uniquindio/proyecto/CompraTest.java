@@ -23,6 +23,7 @@ public class CompraTest {
     private CompraRepo compraRepo;
 
 
+    //-------------------------------CONSULTAS-----------------------------------------------------------
     @Test
     public void listarCompras() {
         List<Compra> compras = compraRepo.findAll(); // Obtener todas las compras

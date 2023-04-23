@@ -33,7 +33,7 @@ public class UsuarioTest {
     @Autowired
     private CategoriaRepo categoriaRepo;
 
-
+    //----------------------------------------CRUD------------------------------------------------------
     @Test
     public void resgistraUsuario(){
         Usuario usuario=  new Usuario();
@@ -97,6 +97,9 @@ public class UsuarioTest {
          Assertions.assertNull(usuarioBuscado);
 
     }
+
+
+    //-----------------------------------consultas------------------------------------------------------
     //caundo se coloca la etiqueta sql hace que se indique que el data set de esa funcion sea el que este en el path asignado en la etuiqueta
     @Test
     @Sql("classpath:usuarios.sql")
