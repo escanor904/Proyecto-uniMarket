@@ -227,6 +227,7 @@ public class UsuarioTest {
     @Sql("classpath:usuarios.sql")
     public void buscarUsuarioPorUsername(){
         Optional<Usuario> usuario = usuarioRepo.findByUsername("unimario");
+        System.out.println(usuario);
         Assertions.assertNotNull(usuario);
 
     }

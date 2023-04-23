@@ -11,4 +11,8 @@ public interface UsuarioServicio {
     void eliminarUsuario(String codigo) throws Exception;
     List<Usuario> listarUsuarios();
 
+    Usuario hacerLogin(String username,String password) throws Exception;
+
+
+
 }

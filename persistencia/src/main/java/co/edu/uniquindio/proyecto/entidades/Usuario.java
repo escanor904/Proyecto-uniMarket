@@ -39,7 +39,7 @@ public class Usuario extends Persona implements Serializable {
      @OneToMany(mappedBy = "miUsuario")
      private List<Compra> misCompras;
 
-    public Usuario(String codigo, @Length(max = 150) String nombre, String cedula, @Email String email, String direccion, String telefono, String username, String password) {
+    public Usuario(String codigo, String cedula,String direccion,@Email String email,@Length(max = 150) String nombre, String telefono,String password, String username) {
         super(codigo, nombre, cedula, email, direccion, telefono);
         this.username = username;
         this.password = password;
