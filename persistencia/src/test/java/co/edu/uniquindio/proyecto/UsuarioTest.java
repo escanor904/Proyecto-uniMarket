@@ -22,19 +22,16 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static java.lang.System.*;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UsuarioTest {
-
-
 
     @Autowired// nos permite inicializar las variables que representen componentes de SpringBoot
     private UsuarioRepo usuarioRepo;
     @Autowired
     private CategoriaRepo categoriaRepo;
-
-
-
 
 
     @Test
@@ -77,7 +74,7 @@ public class UsuarioTest {
         //se vuelve a guardar pero con un email diferente
         usuarioRepo.save(usuarioGuardado);
         Usuario usuarioBuscado = usuarioRepo.findById("904").orElse(null);
-        System.out.println(usuarioGuardado);
+        out.println(usuarioGuardado);
 
        // Assertions.assertEquals("pedrog@gmail.com",usuarioBuscado.getEmail());
 
@@ -105,7 +102,7 @@ public class UsuarioTest {
     @Sql("classpath:usuarios.sql")
     public void listarUsuario() {
         List<Usuario> usuarios = usuarioRepo.findAll();//busca todos los usuarios, findall me permite traer los datos del data set
-        usuarios.forEach(u -> System.out.println(u)); //funcion landa
+        usuarios.forEach(u -> out.println(u)); //funcion landa
      //listar actualizar eliminar y guardar
     }
 
@@ -114,7 +111,7 @@ public class UsuarioTest {
     @Sql("classpath:usuarios.sql")
     public void listarUsuariosPorNombre(){
         List<Usuario> misUsuarios=usuarioRepo.findAllByNombreContains("pedro");
-        misUsuarios.forEach(u -> System.out.println(u));
+        misUsuarios.forEach(u -> out.println(u));
 
     }
 
@@ -135,7 +132,7 @@ public class UsuarioTest {
 
         Pageable paginador = PageRequest.of(0,2);
     Page<Usuario> list = usuarioRepo.findAllBy(paginador);
-        System.out.println(list.stream().collect(Collectors.toList()));
+        out.println(list.stream().collect(Collectors.toList()));
 
     }
 
@@ -146,7 +143,7 @@ public class UsuarioTest {
 
 
         List<Usuario> list = usuarioRepo.findAll(Sort.by("nombre"));
-        System.out.println(list.stream().collect(Collectors.toList()));
+        out.println(list.stream().collect(Collectors.toList()));
 
     }
 
@@ -155,7 +152,7 @@ public class UsuarioTest {
     public void listarCategorias(){
 
     List<Categoria> categorias = categoriaRepo.findAll();
-    categorias.forEach(c -> System.out.println(c));
+    categorias.forEach(c -> out.println(c));
 
     }
 
@@ -166,17 +163,15 @@ public class UsuarioTest {
 
 
         List<Producto>misProductos = usuarioRepo.obtenerProductosUsuarioPorCodigo("904");
-        System.out.println(misProductos);
+        out.println(misProductos);
 
     }
 
     @Test
     @Sql("classpath:usuarios.sql")
     public void obtenerFavoritos(){
-
-
         List<Producto>misProductos = usuarioRepo.obtenerFavoritosPorCorreo("lian@gmail.com");
-        misProductos.forEach(System.out::println);
+        misProductos.forEach(out::println);
         //Assertions.assertEquals(2,misProductos.size());
 
     }
@@ -210,7 +205,7 @@ public class UsuarioTest {
         List<Object[]> respuesta= usuarioRepo.listarUsuariosYProductos();
 
        for (Object[] objeto:respuesta){
-           System.out.println(objeto[0]+"-----"+objeto[1]);
+           out.println(objeto[0]+"-----"+objeto[1]);
        }
 
     }

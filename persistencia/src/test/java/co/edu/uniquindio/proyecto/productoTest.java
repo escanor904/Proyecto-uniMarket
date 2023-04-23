@@ -68,4 +68,16 @@ public class productoTest {
     }
 
 
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void listarProductosConMasComentarios() {
+        List<Object[]> resultado = productoRepo.listarProductosConMasComentarios();
+        for (Object[] row : resultado) {
+            String productoId = (String) row[0];
+            String nombreProducto = (String) row[1];
+            Long cantidadComentarios = (Long) row[2];
+            System.out.println("Producto con el codigo: " + productoId + " - Nombre: " + nombreProducto + " - Cantidad de Comentarios: " + cantidadComentarios);
+        }
+    }
+
 }

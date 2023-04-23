@@ -11,6 +11,8 @@ insert into categoria values ("304","Electrodomesticos");
 insert into categoria values ("305","Inmuebles");
 
 insert into sub_categoria values ("21","motos","302");
+insert into sub_categoria values ("22","carros","302");
+insert into sub_categoria values ("23","zapatos","301");
 
 insert into producto values ("1","celular 10 de 10","2023/10/23","2023/10/25","celular",200000,4,"301","904");
 insert into producto values ("2","moto con el moto en perfecto estado","2021/10/23","2022/10/25","moto",400000,4,"302","904");

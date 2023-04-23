@@ -29,4 +29,5 @@ public class CompraTest {
         Assertions.assertEquals(2,detalleCompras.size());
 
     }
+
 }
