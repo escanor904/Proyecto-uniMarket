@@ -31,9 +31,17 @@ public interface ProductoRepo extends JpaRepository<Producto,String>{
     List<Usuario> listarUsuariosQueComentaronProducto(String codigo);
 
 
-
     @Query("SELECT p.codigo, p.nombre, COUNT(c.mensaje) FROM Producto p LEFT JOIN p.miComentario c GROUP BY p.codigo, p.nombre ORDER BY COUNT(c.mensaje) DESC")
     List<Object[]> listarProductosConMasComentarios();
+
+
+
+    @Query(value = "SELECT p.codigo, p.nombre, COUNT(f.codigo) AS cantidadFavoritos " +
+            "FROM Producto p " +
+            "LEFT JOIN p.usuariosFavoritos f " +
+            "GROUP BY p.codigo, p.nombre " +
+            "ORDER BY cantidadFavoritos DESC")
+    List<Object[]> listarProductosMasAgregadosFavoritos();
 
     //listarProductosValisdos
     //@Query("select new co.edu.uniquindio.proyecto.DTO.ProductoValido(p.nombre,p.descripcion,p.precio) from Producto p where p.fechaLimite < :fechaActual")

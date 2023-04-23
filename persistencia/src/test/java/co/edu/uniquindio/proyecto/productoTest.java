@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyecto.DTO.ProductoValido;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -79,5 +80,20 @@ public class productoTest {
             System.out.println("Producto con el codigo: " + productoId + " - Nombre: " + nombreProducto + " - Cantidad de Comentarios: " + cantidadComentarios);
         }
     }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void listarProductosMasAgregadosFavoritos() {
+        List<Object[]> resultado = productoRepo.listarProductosMasAgregadosFavoritos();
+        Assertions.assertNotNull(resultado);
+        Assertions.assertFalse(resultado.isEmpty());
+        for (Object[] row : resultado) {
+            String productoId = (String) row[0];
+            String nombreProducto = (String) row[1];
+            Long cantidadFavoritos = (Long) row[2];
+            System.out.println("Producto con el código: " + productoId + " - Nombre: " + nombreProducto + " - Cantidad de Favoritos: " + cantidadFavoritos);
+        }
+    }
+
 
 }

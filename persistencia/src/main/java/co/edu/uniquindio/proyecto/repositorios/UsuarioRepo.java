@@ -46,6 +46,7 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
 
 
+
     //---------------------------------Consultas inferidas por SpringBoot----------------------------------------
 
 

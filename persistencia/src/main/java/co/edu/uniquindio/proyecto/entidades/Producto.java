@@ -28,7 +28,7 @@ public class Producto implements Serializable {
     private String descripcion;
 
     @Column(nullable = false)
-    private Double precio;
+    private float precio;
 
     @Column(nullable = false)
     private LocalDate fechaCreacion;

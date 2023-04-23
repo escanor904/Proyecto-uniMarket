@@ -16,6 +16,7 @@ import java.util.List;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CategoriaTest {
 
+
     @Autowired
     private CategoriaRepo categoriaRepo;
     @Test
