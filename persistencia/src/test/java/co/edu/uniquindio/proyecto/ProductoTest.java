@@ -1,9 +1,9 @@
 package co.edu.uniquindio.proyecto;
 
-import co.edu.uniquindio.proyecto.DTO.ProductoValido;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -17,10 +17,12 @@ import java.util.List;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class productoTest {
+public class ProductoTest {
     @Autowired
     private ProductoRepo productoRepo;
 
+
+    //------------------------------CONSULTAS----------------------------------------------------------
     @Test
     @Sql("classpath:usuarios.sql")
     public void listarProductos(){
@@ -65,6 +67,33 @@ public class productoTest {
 
         //List<ProductoValido> respuesta= productoRepo.listarProductosValidos(LocalDateTime.now());
        // respuesta.forEach(u -> System.out.println(u));
+    }
+
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void listarProductosConMasComentarios() {
+        List<Object[]> resultado = productoRepo.listarProductosConMasComentarios();
+        for (Object[] row : resultado) {
+            String productoId = (String) row[0];
+            String nombreProducto = (String) row[1];
+            Long cantidadComentarios = (Long) row[2];
+            System.out.println("Producto con el codigo: " + productoId + " - Nombre: " + nombreProducto + " - Cantidad de Comentarios: " + cantidadComentarios);
+        }
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void listarProductosMasAgregadosFavoritos() {
+        List<Object[]> resultado = productoRepo.listarProductosMasAgregadosFavoritos();
+        Assertions.assertNotNull(resultado);
+        Assertions.assertFalse(resultado.isEmpty());
+        for (Object[] row : resultado) {
+            String productoId = (String) row[0];
+            String nombreProducto = (String) row[1];
+            Long cantidadFavoritos = (Long) row[2];
+            System.out.println("Producto con el código: " + productoId + " - Nombre: " + nombreProducto + " - Cantidad de Favoritos: " + cantidadFavoritos);
+        }
     }
 
 

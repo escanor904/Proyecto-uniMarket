@@ -15,6 +15,9 @@ public interface CompraRepo extends JpaRepository<Compra,String> {
     @Query("select d from Compra c INNER JOIN c.misDetalleCompras d where c.codigo = :codigo  ")
     List<DetalleCompra> detallesCompraPorCodigoDeCompra(String codigo);
 
-    //numero de productos que ha comprado un usuario
+    @Query("SELECT c.miUsuario.codigo, COUNT(c) FROM Compra c GROUP BY c.miUsuario.codigo ORDER BY COUNT(c) DESC")
+    List<Object[]> listarUsuarioConMasCompras();
+
+
 
 }

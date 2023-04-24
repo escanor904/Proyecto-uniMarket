@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,12 +26,12 @@ public class Compra implements Serializable {
 
 
     @Column(nullable = false,columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
 
     @Column(nullable = false)
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Double valorTotal;
+    private Float valorTotal;
 
     @Enumerated(EnumType.STRING)
     private MedioDePago medioDePago;
@@ -40,7 +42,8 @@ public class Compra implements Serializable {
     @OneToMany(mappedBy = "miCompra")
     private List<DetalleCompra> misDetalleCompras;
 
-    public Compra(String codigo, Date fechaCreacion, Double valorTotal, MedioDePago medioDePago, Usuario miUsuario) {
+
+    public Compra(String codigo, LocalDate fechaCreacion, Float valorTotal, MedioDePago medioDePago, Usuario miUsuario) {
         this.codigo = codigo;
         this.fechaCreacion = fechaCreacion;
         this.valorTotal = valorTotal;

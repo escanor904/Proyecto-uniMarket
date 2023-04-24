@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -23,7 +24,7 @@ public class ProductoModerador implements Serializable {
     private String motivo;
 
     @Column(nullable = false)
-    private Date fecha;
+    private LocalDate fecha;
 
 
     @ManyToOne

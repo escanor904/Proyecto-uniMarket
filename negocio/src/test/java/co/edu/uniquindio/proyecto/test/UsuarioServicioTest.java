@@ -73,6 +73,28 @@ public class UsuarioServicioTest {
         }
     }
 
+    @Test
+    public void actualizarUsuario() throws Exception {
+        // Crear un usuario existente en la base de datos
+        Usuario u = new Usuario("904","1023452133","cll28#14-09","mario@gmail.com","mario","3216758976","Heropro.12","unimario");
+        Usuario registrado = usuarioServicio.registrarUsuario(u);
+
+        // Modificar los datos del usuario
+        registrado.setNombre("Mario Modificado");
+        registrado.setTelefono("9876543210");
+
+        try {
+            Usuario actualizado = usuarioServicio.actualizarUsuario(registrado); // Llamada al método de actualización de usuario
+            Assertions.assertNotNull(actualizado);
+            Assertions.assertEquals("Mario Modificado", actualizado.getNombre()); // Verificar que los datos se hayan actualizado correctamente
+            Assertions.assertEquals("9876543210", actualizado.getTelefono());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 
 
 

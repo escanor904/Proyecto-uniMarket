@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,13 +28,13 @@ public class Producto implements Serializable {
     private String descripcion;
 
     @Column(nullable = false)
-    private Double precio;
+    private float precio;
 
     @Column(nullable = false)
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
     @Column(nullable = false)
-    private Date fechaLimite;
+    private LocalDate fechaLimite;
 
     @Column(nullable = false)
     private Integer unidades;
