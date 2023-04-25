@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface SubCategoriaRepo extends JpaRepository<SubCategoria,Long>{
@@ -24,6 +25,5 @@ public interface SubCategoriaRepo extends JpaRepository<SubCategoria,Long>{
     // Obtener subcategorías ordenadas por nombre ascendente
     @Query("SELECT s FROM SubCategoria s INNER JOIN s.miCategoria c ORDER BY s.nombre ASC")
     List<SubCategoria> obtenerSubCategoriasOrdenadasPorNombreAsc();
-
 
 }

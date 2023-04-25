@@ -1,11 +1,10 @@
 package co.edu.uniquindio.proyecto;
 
 
-import co.edu.uniquindio.proyecto.entidades.Categoria;
-import co.edu.uniquindio.proyecto.entidades.Compra;
-import co.edu.uniquindio.proyecto.entidades.DetalleCompra;
+import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
 import co.edu.uniquindio.proyecto.repositorios.CompraRepo;
+import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,12 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -22,7 +26,93 @@ public class CompraTest {
     @Autowired
     private CompraRepo compraRepo;
 
+    @Autowired// nos permite inicializar las variables que representen componentes de SpringBoot
+    private UsuarioRepo usuarioRepo;
 
+
+    /**
+     * el usuario se obtiene y se asocia desde usuarios.sql
+     */
+    @Test
+    @Sql("classpath:usuarios.sql") // Archivo SQL con datos de usuarios en la base de datos
+    public void crearCompra() {
+        // Crear una nueva instancia de la entidad Compra
+        Compra compra = new Compra();
+
+        // Asignar valores predeterminados a los campos de la entidad
+        compra.setCodigo("123");
+        compra.setValorTotal(100000F);
+        compra.setMedioDePago(MedioDePago.EFECTIVO_EN_PUNTO_DE_PAGO);
+
+        // Obtener un usuario existente de la base de datos
+        Usuario usuario = usuarioRepo.obtenerUsuarioPorCodigo("906");
+        assertNotNull(usuario);
+        compra.setMiUsuario(usuario);
+
+        compra.setFechaCreacion(LocalDate.now());
+
+        // Guardar la compra en la base de datos
+        Compra compraGuardada = compraRepo.save(compra);
+        assertNotNull(compraGuardada);
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql") // Archivo SQL con datos de usuarios en la base de datos
+    public void actualizarCompra() {
+        // Crear una nueva instancia de la entidad Compra
+        Compra compra = new Compra();
+
+        // Asignar valores predeterminados a los campos de la entidad
+        compra.setCodigo("123");
+        compra.setValorTotal(100000F);
+        compra.setMedioDePago(MedioDePago.EFECTIVO_EN_PUNTO_DE_PAGO);
+
+        // Obtener un usuario existente de la base de datos
+        Usuario usuario = usuarioRepo.obtenerUsuarioPorCodigo("906");
+        assertNotNull(usuario);
+        compra.setMiUsuario(usuario);
+
+        compra.setFechaCreacion(LocalDate.now());
+
+        // Guardar la compra en la base de datos
+        Compra compraGuardada = compraRepo.save(compra);
+        assertNotNull(compraGuardada);
+
+        // Actualizar la compra recién creada
+        compraGuardada.setValorTotal(150000F); // Actualizar el valor total de la compra
+        Compra compraActualizada = compraRepo.save(compraGuardada);
+        assertNotNull(compraActualizada);
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql") // Archivo SQL con datos de usuarios en la base de datos
+    public void eliminarCompra() {
+        // Crear una nueva instancia de la entidad Compra
+        Compra compra = new Compra();
+
+        // Asignar valores predeterminados a los campos de la entidad
+        compra.setCodigo("123");
+        compra.setValorTotal(100000F);
+        compra.setMedioDePago(MedioDePago.EFECTIVO_EN_PUNTO_DE_PAGO);
+
+        // Obtener un usuario existente de la base de datos
+        Usuario usuario = usuarioRepo.obtenerUsuarioPorCodigo("906");
+        assertNotNull(usuario);
+        compra.setMiUsuario(usuario);
+
+        compra.setFechaCreacion(LocalDate.now());
+
+        // Guardar la compra en la base de datos
+        Compra compraGuardada = compraRepo.save(compra);
+        assertNotNull(compraGuardada);
+
+        // Eliminar la compra recién creada
+        compraRepo.delete(compraGuardada);
+
+        // Verificar que la compra haya sido eliminada
+        Compra compraObtenida = compraRepo.obtenerCompraPorCodigo("123");
+        assertNull(compraObtenida);
+    }
     //-------------------------------CONSULTAS-----------------------------------------------------------
     @Test
     public void listarCompras() {
