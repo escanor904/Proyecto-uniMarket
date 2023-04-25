@@ -63,7 +63,6 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
     Page<Usuario> findAllBy(Pageable paginador);
 
 
-
-
-
+    @Query("select u from Usuario u where u.codigo = :codigo")
+    Usuario obtenerUsuarioPorCodigo(String codigo);
 }
