@@ -23,8 +23,8 @@ public class UsuarioServicioTest {
     private UsuarioServicio usuarioServicio;
 
     @Test
-    public void registrarusuario(){
-     Usuario u = new Usuario("904","1023452133","cll28#14-09","mario@gmail.com","mario","3216758976","Heropro.12","unimario");
+    public void registrarusuarioTest(){
+     Usuario u = new Usuario("905","mario contreras","1023452133","mario@gmail.com","28#14-09","3216758976","unimario","Heropro.12");
         try {
             Usuario registrado = usuarioServicio.registrarUsuario(u);
             Assertions.assertNotNull(registrado);
@@ -35,8 +35,8 @@ public class UsuarioServicioTest {
     }
 
     @Test
-    public void actualizarUsuario(){
-        Usuario u = new Usuario("904","1023452133","cll28#14-09","mario@gmail.com","mario","3216758976","Heropro.12","unimario");
+    public void aactualizarUsuarioTest(){
+        Usuario u =  new Usuario("909","mario contreras","1023452133","mario@gmail.com","28#14-09","3216758976","unimario","Heropro.12");
         try {
             Usuario registrado = usuarioServicio.actualizarUsuario(u);
             Assertions.assertNotNull(registrado);
@@ -47,8 +47,8 @@ public class UsuarioServicioTest {
     }
 
     @Test
-    public void eliminarUsuario(){
-        Usuario u = new Usuario("904","1023452133","cll28#14-09","mario@gmail.com","mario","3216758976","Heropro.12","unimario");
+    public void eliminarUsuarioTest(){
+        Usuario u =  new Usuario("904","mario contreras","1023452133","mario@gmail.com","28#14-09","3216758976","unimario","Heropro.12");
         try {
             //usuarioServicio.registrarUsuario(u);
             usuarioServicio.eliminarUsuario("904");
@@ -60,8 +60,8 @@ public class UsuarioServicioTest {
     }
 
     @Test
-    public void listarUsuarios(){
-        Usuario u = new Usuario("904","1023452133","cll28#14-09","mario@gmail.com","mario","3216758976","Heropro.12","unimario");
+    public void listarUsuariosTest(){
+        Usuario u = new Usuario("904","mario contreras","1023452133","mario@gmail.com","28#14-09","3216758976",null,"Heropro.12");
         try {
             usuarioServicio.registrarUsuario(u);
             List<Usuario> usuarios =usuarioServicio.listarUsuarios();
@@ -74,9 +74,9 @@ public class UsuarioServicioTest {
     }
 
     @Test
-    public void actualizarUsuario() throws Exception {
+    public void actualizarUsuarioTest() throws Exception {
         // Crear un usuario existente en la base de datos
-        Usuario u = new Usuario("904","1023452133","cll28#14-09","mario@gmail.com","mario","3216758976","Heropro.12","unimario");
+        Usuario u =  new Usuario("904","mario contreras","1023452133","mario@gmail.com","28#14-09","3216758976","unimario","Heropro.12");
         Usuario registrado = usuarioServicio.registrarUsuario(u);
 
         // Modificar los datos del usuario
@@ -92,6 +92,38 @@ public class UsuarioServicioTest {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Este metodo nos permite probar que el inicio de sesion este funcionando bien
+     * @autor Escanor
+     */
+    @Test
+    public void inicioSesionTest(){
+        Usuario u = new Usuario("904","mario contreras","1023452133","mario@gmail.com","28#14-09","3216758976","unimario","Heropro.12");
+        try {
+            usuarioServicio.registrarUsuario(u);
+            usuarioServicio.iniciarSesion("unimario","Heropro.12");
+
+
+        } catch (Exception e) {
+            //throw new RuntimeException(e);
+            //sirve para que no salga la excepcion y simplemente la prueba se muestre como no aprobada
+            Assertions.assertTrue(false, e.getMessage());
+        }
+    }
+
+    @Test
+    public void obtenerUsuarioTest(){
+        try {
+            Usuario u = usuarioServicio.obtenerUsuario("909");
+            Assertions.assertNotNull(u);
+        } catch (Exception e) {
+            //throw new RuntimeException(e);
+            Assertions.assertTrue(false);
+        }
+    }
+
+
 
 
 

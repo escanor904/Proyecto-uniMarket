@@ -58,6 +58,8 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
     Optional<Usuario> findByUsername(String username);
     Optional<Usuario> findByEmailAndCodigo(String email,String password);
 
+    Optional<Usuario> findByUsernameAndPassword(String username,String password);
+
 
 
     Page<Usuario> findAllBy(Pageable paginador);

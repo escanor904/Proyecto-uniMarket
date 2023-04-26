@@ -4,6 +4,10 @@ package co.edu.uniquindio.proyecto.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
@@ -21,21 +25,26 @@ public class Producto implements Serializable {
     @EqualsAndHashCode.Include
     private String codigo;
 
+    @NotBlank(message = "El nombre del producto es obligatorio")
     @Column(nullable = false,length = 100)
     private String nombre;
 
+    @NotBlank
     @Column(nullable = false)
     private String descripcion;
 
+    @Positive
     @Column(nullable = false)
     private float precio;
 
     @Column(nullable = false)
     private LocalDate fechaCreacion;
 
+    @Future
     @Column(nullable = false)
     private LocalDate fechaLimite;
 
+    @PositiveOrZero
     @Column(nullable = false)
     private Integer unidades;
 
@@ -52,6 +61,20 @@ public class Producto implements Serializable {
     @ToString.Exclude
     @ManyToOne
     private Categoria miCategoria;
+
+
+
+    //datos que se necesitan para crear un producto
+    public Producto(String codigo, String nombre, String descripcion, float precio, LocalDate fechaCreacion, LocalDate fechaLimite, Integer unidades) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaLimite = fechaLimite;
+        this.unidades = unidades;
+    }
+
     //entidad Propietaria es el producto porque para hacer un producto necesitamos una categoria
 
     @ToString.Exclude

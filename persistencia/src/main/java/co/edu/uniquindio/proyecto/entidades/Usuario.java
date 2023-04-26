@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,8 +16,10 @@ import java.util.List;
 @ToString(callSuper = true)
 public class Usuario extends Persona implements Serializable {
 
+    @NotBlank(message = "el campo de usuario no puede ser nulo")
     @Column(nullable = false,length = 20,unique = true)
     private String username;
+
     @Column(nullable = false,length = 20)
     private String password;
 

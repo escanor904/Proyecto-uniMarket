@@ -7,11 +7,23 @@ import java.util.List;
 public interface ProductoServicio {
 
     Producto publicarProducto(Producto p) throws Exception;
+
+    void actualizarProducto(Producto p) throws Exception;
+
+    void eliminarProducto(String codigo) throws Exception;
+
+    Producto obtenerProducto(String codigo) throws Exception;
     List<Producto> listarProductosPorCategoria(Categoria categoria);
 
     void comentarProducto(String mensaje,Usuario usuario,Producto producto) throws Exception;
-    void eliminarProductofavorito(Producto producto,Usuario usuario);
+
+    void guardarProductoEnFavoritos(Producto producto,Usuario usuario) throws Exception;
+    void eliminarProductofavorito(Producto producto,Usuario usuario)throws Exception;
     void comprarProductos(DetalleCompra detalleCompra,Producto producto);
+
+     List<Producto> buscarProducto(String nombre, String [] producto);
+
+     List<Producto> listarProductos(String codigoUsuario)throws Exception;
 
 
 }
