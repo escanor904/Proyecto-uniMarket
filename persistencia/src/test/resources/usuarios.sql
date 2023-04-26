@@ -1,8 +1,8 @@
-insert into usuario values ("904","1023452133","cll28#14-09","mario@gmail.com","mario","3216758976","Heropro.12","unimario");
-insert into usuario values ("905","1987654387","cll28#14-10","pedro@gmail.com","pedro","3216758977","Heropro.13","unipedro");
-insert into usuario values ("906","1087654309","cll28#14-11","julian@gmail.com","julian","3216758978","Heropro.14","unijulian");
-insert into usuario values ("907","1876543009","cll28#14-22","julia@gmail.com","pedro","3336758978","Heropro.15","unijulia");
-insert into usuario values ("908","1675991201","cll28#14-33","lian@gmail.com","gabriel","38916758978","Heropro.16","unilian");
+insert into usuario values ("904","cll28#14-09","mario@gmail.com","mario","3216758976","Heropro.12","unimario");
+insert into usuario values ("905","cll28#14-10","pedro@gmail.com","pedro","3216758977","Heropro.13","unipedro");
+insert into usuario values ("906","cll28#14-11","julian@gmail.com","julian","3216758978","Heropro.14","unijulian");
+insert into usuario values ("907","cll28#14-22","julia@gmail.com","pedro","3336758978","Heropro.15","unijulia");
+insert into usuario values ("908","cll28#14-33","lian@gmail.com","gabriel","38916758978","Heropro.16","unilian");
 
 insert into categoria values ("301","ropa");
 insert into categoria values ("302","vehiculo");

@@ -232,14 +232,6 @@ public class UsuarioTest {
 
     @Test
     @Sql("classpath:usuarios.sql")
-    public void buscarUsuarioPorCedula(){
-        Optional<Usuario> usuario = usuarioRepo.findByCedula("1023452133");
-        Assertions.assertNotNull(usuario);
-
-    }
-
-    @Test
-    @Sql("classpath:usuarios.sql")
     public void inicioSesionTest(){
         Optional<Usuario>  usuario= usuarioRepo.findByUsernameAndPassword("unimario","Heropro.12");
         Assertions.assertNotNull(usuario);

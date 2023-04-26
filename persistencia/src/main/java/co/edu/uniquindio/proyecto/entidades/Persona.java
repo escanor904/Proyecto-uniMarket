@@ -27,15 +27,11 @@ public class Persona implements Serializable  {
     private String nombre;
 
     @Column(nullable = false,length = 150,unique = true)
-    private String cedula;
-
-
-    @Column(nullable = false,length = 150,unique = true)
     @Email
     private String email;
 
-    //@Column(nullable = false,length = 20)
-    //private String password;
+    @Column(nullable = false,length = 20)
+    private String password;
 
     @Column(nullable = false,length = 150)
     private String direccion;

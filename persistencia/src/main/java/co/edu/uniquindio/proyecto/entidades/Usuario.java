@@ -42,12 +42,12 @@ public class Usuario extends Persona implements Serializable {
      @OneToMany(mappedBy = "miUsuario")
      private List<Compra> misCompras;
 
-    public Usuario(String codigo, @Length(max = 150) String nombre, String cedula, @Email String email, String direccion, String telefono, String username, String password) {
-        super(codigo, nombre, cedula, email, direccion, telefono);
+    public Usuario(String codigo, @Length(max = 150) String nombre, @Email String email, String password, String direccion, String telefono, String username, String password1) {
+        super(codigo, nombre, email, password, direccion, telefono);
         this.username = username;
-        this.password = password;
-
+        this.password = password1;
     }
+
 
     //entidad inversa
 

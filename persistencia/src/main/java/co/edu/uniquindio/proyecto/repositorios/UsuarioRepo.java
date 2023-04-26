@@ -53,7 +53,6 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
     //con inferencia de datos gracias a el framework de spring que es JPArepository
     List<Usuario>findAllByNombreContains(String nombre);
     List<Usuario>findAllByTelefono(String telefono);
-    Optional<Usuario> findByCedula(String cedula);
     Optional<Usuario> findByEmail(String email);
     Optional<Usuario> findByUsername(String username);
     Optional<Usuario> findByEmailAndCodigo(String email,String password);
