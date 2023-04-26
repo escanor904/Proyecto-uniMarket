@@ -31,7 +31,7 @@ public class ModeradorServicioImpl implements ModeradorServicio {
             throw new Exception("El código ya está registrado");
         }
 
-        moderador = moderadorRepo.findByUsername(m.getNombre());
+        moderador = moderadorRepo.findByNombre(m.getNombre());
         if (moderador.isPresent()) {
             throw new Exception("El nombre ya está registrado");
         }
@@ -81,7 +81,7 @@ public class ModeradorServicioImpl implements ModeradorServicio {
 
     @Override
     public Moderador iniciarSesion(String email, String password) throws Exception {
-        Optional<Moderador> moderadorExistente = moderadorRepo.findByUsernameAndPassword(email, password);
+        Optional<Moderador> moderadorExistente = moderadorRepo.findByNombreAndPassword(email, password);
         if (!moderadorExistente.isPresent()) {
             throw new Exception("El correo electrónico o la contraseña son incorrectos");
         }

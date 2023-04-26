@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc8b336f-cb2d-4c7f-a277-02412142f29a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/ModeradorServicio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/ModeradorServicioImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/negocio/src/test/java/co/edu/uniquindio/proyecto/test/ModeradorServicioTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/ModeradorRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_04_23__6_24_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_04_23__6_24_p__m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/ModeradorServicioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/ModeradorServicioImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/UsuarioServicioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/UsuarioServicioImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/test/java/co/edu/uniquindio/proyecto/test/ModeradorServicioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/test/java/co/edu/uniquindio/proyecto/test/ModeradorServicioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Moderador.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Moderador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/entidades/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/UsuarioRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/UsuarioRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/UsuarioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/proyecto/UsuarioTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/test/resources/usuarios.sql" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/resources/usuarios.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,101 +104,108 @@
       <recent name="co.edu.uniquindio.proyecto.servicios" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CompraTest.listarUsuarioConMasCompras">
-    <configuration name="CompraTest.listarCompras" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="persistencia" />
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.ModeradorServicioTest.listarModeradoresTest">
+    <configuration name="ModeradorServicioTest.listarModeradoresTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="negocio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.proyecto.*" />
+          <option name="PATTERN" value="co.edu.uniquindio.proyecto.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.CompraTest" />
-      <option name="METHOD_NAME" value="listarCompras" />
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.test.ModeradorServicioTest" />
+      <option name="METHOD_NAME" value="listarModeradoresTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompraTest.listarComprasConDetalle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="persistencia" />
+    <configuration name="UsuarioServicioTest.aactualizarUsuarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="negocio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.proyecto.*" />
+          <option name="PATTERN" value="co.edu.uniquindio.proyecto.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.CompraTest" />
-      <option name="METHOD_NAME" value="listarComprasConDetalle" />
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.test.UsuarioServicioTest" />
+      <option name="METHOD_NAME" value="aactualizarUsuarioTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompraTest.listarUsuarioConMasCompras" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="persistencia" />
+    <configuration name="UsuarioServicioTest.eliminarUsuarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="negocio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.proyecto.*" />
+          <option name="PATTERN" value="co.edu.uniquindio.proyecto.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.CompraTest" />
-      <option name="METHOD_NAME" value="listarUsuarioConMasCompras" />
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.test.UsuarioServicioTest" />
+      <option name="METHOD_NAME" value="eliminarUsuarioTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UsuarioTest.listarUsuario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="persistencia" />
+    <configuration name="UsuarioServicioTest.listarUsuariosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="negocio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.proyecto.*" />
+          <option name="PATTERN" value="co.edu.uniquindio.proyecto.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.UsuarioTest" />
-      <option name="METHOD_NAME" value="listarUsuario" />
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.test.UsuarioServicioTest" />
+      <option name="METHOD_NAME" value="listarUsuariosTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UsuarioTest.listarUsuariosPorNombre" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="persistencia" />
+    <configuration name="UsuarioServicioTest.registrarusuarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="negocio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.proyecto.*" />
+          <option name="PATTERN" value="co.edu.uniquindio.proyecto.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.UsuarioTest" />
-      <option name="METHOD_NAME" value="listarUsuariosPorNombre" />
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.test.UsuarioServicioTest" />
+      <option name="METHOD_NAME" value="registrarusuarioTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CompraTest.listarCompras" />
-      <item itemvalue="JUnit.CompraTest.listarComprasConDetalle" />
-      <item itemvalue="JUnit.CompraTest.listarUsuarioConMasCompras" />
-      <item itemvalue="JUnit.UsuarioTest.listarUsuario" />
-      <item itemvalue="JUnit.UsuarioTest.listarUsuariosPorNombre" />
+      <item itemvalue="JUnit.ModeradorServicioTest.listarModeradoresTest" />
+      <item itemvalue="JUnit.UsuarioServicioTest.aactualizarUsuarioTest" />
+      <item itemvalue="JUnit.UsuarioServicioTest.eliminarUsuarioTest" />
+      <item itemvalue="JUnit.UsuarioServicioTest.listarUsuariosTest" />
+      <item itemvalue="JUnit.UsuarioServicioTest.registrarusuarioTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CompraTest.listarUsuarioConMasCompras" />
-        <item itemvalue="JUnit.CompraTest.listarComprasConDetalle" />
-        <item itemvalue="JUnit.CompraTest.listarCompras" />
-        <item itemvalue="JUnit.UsuarioTest.listarUsuariosPorNombre" />
-        <item itemvalue="JUnit.UsuarioTest.listarUsuario" />
+        <item itemvalue="JUnit.ModeradorServicioTest.listarModeradoresTest" />
+        <item itemvalue="JUnit.UsuarioServicioTest.listarUsuariosTest" />
+        <item itemvalue="JUnit.UsuarioServicioTest.eliminarUsuarioTest" />
+        <item itemvalue="JUnit.UsuarioServicioTest.aactualizarUsuarioTest" />
+        <item itemvalue="JUnit.UsuarioServicioTest.registrarusuarioTest" />
       </list>
     </recent_temporary>
   </component>
@@ -247,9 +246,21 @@
       <workItem from="1682111614090" duration="26196000" />
       <workItem from="1682465038807" duration="16071000" />
     </task>
+    <task id="LOCAL-00001" summary="servicos de moderador , nota : se quito la cedula de la clase persona,se modifico el archivo usuariossql borrando las cedulas y se probaron los test nuevamente para corroborar la funcionalidad">
+      <created>1682501406341</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682501406341</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="servicos de moderador , nota : se quito la cedula de la clase persona,se modifico el archivo usuariossql borrando las cedulas y se probaron los test nuevamente para corroborar la funcionalidad" />
+    <option name="LAST_COMMIT_MESSAGE" value="servicos de moderador , nota : se quito la cedula de la clase persona,se modifico el archivo usuariossql borrando las cedulas y se probaron los test nuevamente para corroborar la funcionalidad" />
   </component>
 </project>

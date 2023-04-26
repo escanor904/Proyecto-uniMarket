@@ -23,7 +23,7 @@ public class UsuarioServicioImpl implements UsuarioServicio{
             throw new Exception("El codigo del usuario ya existe");
         }
 
-        buscado= usuarioRepo.findByCedula(u.getCedula());
+        buscado= usuarioRepo.findById(u.getCodigo());
         if (buscado.isPresent()){
             throw new Exception("La cedula del usuario ya existe");
         }
