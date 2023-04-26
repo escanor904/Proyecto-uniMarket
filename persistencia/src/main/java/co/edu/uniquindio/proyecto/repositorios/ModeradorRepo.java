@@ -16,7 +16,6 @@ import java.util.Optional;
 @Repository
 public interface ModeradorRepo extends JpaRepository<Moderador,String> {
     List<Moderador> findAllByNombreContains(String nombre);
-    List<Moderador> findAllByTelefono(String telefono);
     Optional<Moderador> findByEmail(String email);
     Optional<Moderador> findByNombre(String nombre);
     Optional<Moderador> findByEmailAndCodigo(String email, String codigo);
@@ -25,4 +24,5 @@ public interface ModeradorRepo extends JpaRepository<Moderador,String> {
     @Query("select m from Moderador m where m.codigo = :codigo")
     Moderador obtenerModeradorPorCodigo(String codigo);
 
+    Optional<Moderador> findByEmailAndPassword(String email, String password);
 }

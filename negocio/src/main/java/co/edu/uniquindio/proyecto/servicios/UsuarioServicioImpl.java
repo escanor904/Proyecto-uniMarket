@@ -18,24 +18,27 @@ public class UsuarioServicioImpl implements UsuarioServicio{
     @Override
     public Usuario registrarUsuario(Usuario u) throws Exception {
 
-        Optional<Usuario> buscado= usuarioRepo.findById(u.getCodigo());
+        Optional<Usuario> buscado = usuarioRepo.findById(u.getCodigo());
         if (buscado.isPresent()){
-            throw new Exception("El codigo del usuario ya existe");
+            throw new Exception("El código del usuario ya existe");
         }
 
-        buscado= usuarioRepo.findById(u.getCodigo());
-        if (buscado.isPresent()){
-            throw new Exception("La cedula del usuario ya existe");
-        }
-        buscado=usuarioRepo.findByEmail(u.getEmail());
+        buscado = usuarioRepo.findByEmail(u.getEmail());
         if (buscado.isPresent()){
             throw new Exception("El email del usuario ya existe");
         }
 
-        buscado=usuarioRepo.findByUsername(u.getUsername());
+        buscado = usuarioRepo.findByUsername(u.getUsername());
         if (buscado.isPresent()){
             throw new Exception("El username del usuario ya existe");
         }
+
+        buscado = usuarioRepo.findById(u.getNombre());
+        if (buscado.isPresent()){
+            throw new Exception("El nombre del usuario ya existe");
+        }
+
+
         return usuarioRepo.save(u);
     }
 

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.repositorios;
 
 import co.edu.uniquindio.proyecto.entidades.Comentario;
+import co.edu.uniquindio.proyecto.entidades.Moderador;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import org.springframework.data.domain.Page;
@@ -60,6 +61,7 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
     Optional<Usuario> findByUsernameAndPassword(String username,String password);
 
 
+    Optional<Usuario> findByNombre(String nombre);
 
     Page<Usuario> findAllBy(Pageable paginador);
 

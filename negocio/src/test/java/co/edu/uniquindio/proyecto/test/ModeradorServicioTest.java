@@ -89,8 +89,9 @@ public class ModeradorServicioTest {
 
     @Test
     public void obtenerModeradorTest(){
+        registrarModeradorTest();
         try {
-            Moderador m = moderadorServicio.obtenerModerador("909");
+            Moderador m = moderadorServicio.obtenerModerador("904");
             Assertions.assertNotNull(m);
         } catch (Exception e) {
             Assertions.assertTrue(false);

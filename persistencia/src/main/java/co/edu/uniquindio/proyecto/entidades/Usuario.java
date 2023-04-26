@@ -20,8 +20,12 @@ public class Usuario extends Persona implements Serializable {
     @Column(nullable = false,length = 20,unique = true)
     private String username;
 
-    @Column(nullable = false,length = 20)
-    private String password;
+    @Column(nullable = false,length = 150)
+    private String direccion;
+
+    @Column(length = 20)
+    private String telefono;
+
 
      @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")
@@ -42,10 +46,11 @@ public class Usuario extends Persona implements Serializable {
      @OneToMany(mappedBy = "miUsuario")
      private List<Compra> misCompras;
 
-    public Usuario(String codigo, @Length(max = 150) String nombre, @Email String email, String password, String direccion, String telefono, String username, String password1) {
-        super(codigo, nombre, email, password, direccion, telefono);
+    public Usuario(String codigo, @Length(max = 150) String nombre, @Email String email, String telefono, String direccion , String username,String password) {
+        super(codigo, nombre, email, password);
         this.username = username;
-        this.password = password1;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
 
