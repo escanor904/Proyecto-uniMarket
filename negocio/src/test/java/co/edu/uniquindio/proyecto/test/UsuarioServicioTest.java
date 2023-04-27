@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.test;
 
 import co.edu.uniquindio.proyecto.NegocioApplication;
+import co.edu.uniquindio.proyecto.entidades.Compra;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 
@@ -35,30 +36,49 @@ public class UsuarioServicioTest {
     }
 
     @Test
-    public void aactualizarUsuarioTest(){
-        Usuario  u = new Usuario("904","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
+    public void actualizarUsuarioTest() throws Exception {
+        // Crear un usuario existente en la base de datos
+        Usuario u = new Usuario("904","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
+        Usuario registrado = usuarioServicio.registrarUsuario(u);
+
+        // Modificar los datos del usuario
+        registrado.setNombre("Mario Modificado");
+        registrado.setTelefono("9876543210");
+
         try {
-            Usuario registrado = usuarioServicio.actualizarUsuario(u);
-            Assertions.assertNotNull(registrado);
+            Usuario actualizado = usuarioServicio.actualizarUsuario(registrado); // Llamada al método de actualización de usuario
+            Assertions.assertNotNull(actualizado);
+            Assertions.assertEquals("Mario Modificado", actualizado.getNombre()); // Verificar que los datos se hayan actualizado correctamente
+            Assertions.assertEquals("9876543210", actualizado.getTelefono());
         } catch (Exception e) {
-            //throw new RuntimeException(e);
-            Assertions.assertTrue(false);
+            Assertions.fail("Se lanzó una excepción al actualizar el usuario: " + e.getMessage());
         }
     }
+
 
     @Test
-    public void eliminarUsuarioTest(){
-        Usuario  u = new Usuario("904","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
+    public void eliminarUsuarioTest() throws Exception {
+        // Crear un objeto Usuario con algunos datos de ejemplo
+        Usuario usuario = new Usuario("909", "Mario", "mario@gmail.com", "3216758976", "28#14-09", "unimario", "Heropro.12");
 
+        // Registrar el usuario
+        usuarioServicio.registrarUsuario(usuario);
+
+        // Eliminar el usuario
+        usuarioServicio.eliminarUsuario(usuario.getCodigo());
+
+        // Intentar obtener el usuario eliminado
+        Usuario usuarioEliminado = null;
         try {
-            //usuarioServicio.registrarUsuario(u);
-            usuarioServicio.eliminarUsuario("904");
+            usuarioEliminado = usuarioServicio.obtenerUsuario(usuario.getCodigo());
         } catch (Exception e) {
-            //throw new RuntimeException(e);
-            //sirve para que no salga la excepcion y simplemente la prueba se muestre como no aprobada
-            Assertions.assertTrue(false);
+            // Capturar la excepción si se lanza al intentar obtener el usuario eliminado
         }
+
+        // Verificar que el usuario eliminado no se pueda encontrar
+        Assertions.assertNull(usuarioEliminado);
     }
+
 
     @Test
     public void listarUsuariosTest(){
@@ -74,25 +94,7 @@ public class UsuarioServicioTest {
         }
     }
 
-    @Test
-    public void actualizarUsuarioTest() throws Exception {
-        // Crear un usuario existente en la base de datos
-        Usuario  u = new Usuario("904","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
-        Usuario registrado = usuarioServicio.registrarUsuario(u);
 
-        // Modificar los datos del usuario
-        registrado.setNombre("Mario Modificado");
-        registrado.setTelefono("9876543210");
-
-        try {
-            Usuario actualizado = usuarioServicio.actualizarUsuario(registrado); // Llamada al método de actualización de usuario
-            Assertions.assertNotNull(actualizado);
-            Assertions.assertEquals("Mario Modificado", actualizado.getNombre()); // Verificar que los datos se hayan actualizado correctamente
-            Assertions.assertEquals("9876543210", actualizado.getTelefono());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     /**
      * Este metodo nos permite probar que el inicio de sesion este funcionando bien
@@ -115,7 +117,7 @@ public class UsuarioServicioTest {
 
     @Test
     public void obtenerUsuarioTest(){
-        Usuario  usuario = new Usuario("909","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
+        Usuario  usuario = new Usuario("909","mariocontreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
         try {
             usuarioServicio.registrarUsuario(usuario);
             Usuario u = usuarioServicio.obtenerUsuario("909");

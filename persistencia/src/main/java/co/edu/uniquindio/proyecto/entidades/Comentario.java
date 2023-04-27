@@ -22,19 +22,12 @@ public class Comentario implements Serializable {
     @EqualsAndHashCode.Include
     private String codigo;
 
-    @Column(length = 150,nullable = false)
-    private String mensaje;
-
 
     @Column(nullable = false,columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDate fechaCreacion;
+    @Column(length = 150,nullable = false)
+    private String mensaje;
 
-
-    public Comentario(String codigo, String mensaje, LocalDate fechaCreacion) {
-        this.codigo = codigo;
-        this.mensaje = mensaje;
-        this.fechaCreacion = fechaCreacion;
-    }
 
     @ToString.Exclude
     @ManyToOne
@@ -44,5 +37,13 @@ public class Comentario implements Serializable {
     @ToString.Exclude
     @ManyToOne
     private Usuario miUsuario;
+
+
+    public Comentario(String codigo, String mensaje, LocalDate fechaCreacion) {
+        this.codigo = codigo;
+        this.mensaje = mensaje;
+        this.fechaCreacion = fechaCreacion;
+    }
+
 
 }

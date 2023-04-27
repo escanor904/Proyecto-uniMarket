@@ -11,8 +11,7 @@ import java.util.Optional;
 @Service
 public class ComentarioServicioImpl implements ComentarioServicio {
 
-    final
-    ComentarioRepo comentarioRepo;
+    private final ComentarioRepo comentarioRepo;
 
     public ComentarioServicioImpl(ComentarioRepo comentarioRepo) {
         this.comentarioRepo = comentarioRepo;
