@@ -94,5 +94,10 @@ public class UsuarioServicioImpl implements UsuarioServicio{
         return usuarioRepo.obtenerUsuarioPorCodigo(codigo);
     }
 
+    @Override
+    public Usuario obtenerPropietarioProducto(String codigoProducto) {
+        return null;
+    }
+
 
 }

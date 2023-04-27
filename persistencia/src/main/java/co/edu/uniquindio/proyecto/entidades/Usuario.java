@@ -16,7 +16,7 @@ import java.util.List;
 @ToString(callSuper = true)
 public class Usuario extends Persona implements Serializable {
 
-    @NotBlank(message = "el campo de usuario no puede ser nulo")
+
     @Column(nullable = false,length = 20,unique = true)
     private String username;
 

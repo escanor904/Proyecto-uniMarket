@@ -29,6 +29,13 @@ public class Comentario implements Serializable {
     @Column(nullable = false,columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDate fechaCreacion;
 
+
+    public Comentario(String codigo, String mensaje, LocalDate fechaCreacion) {
+        this.codigo = codigo;
+        this.mensaje = mensaje;
+        this.fechaCreacion = fechaCreacion;
+    }
+
     @ToString.Exclude
     @ManyToOne
     private Producto miProducto;

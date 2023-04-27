@@ -13,6 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @DataJpaTest
@@ -95,6 +96,35 @@ public class ProductoTest {
             System.out.println("Producto con el código: " + productoId + " - Nombre: " + nombreProducto + " - Cantidad de Favoritos: " + cantidadFavoritos);
         }
     }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void obtenerPropietarioProductoTest() {
+
+        Optional<Usuario> u=productoRepo.obtenerPropietarioProducto("1");
+        System.out.println(u.get().getNombre());
+
+    }
+
+    /**
+     * @Autor Escanor
+     * guarda un producto favoritos de un usuario específicos
+     */
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void guardarProductoEnFavoritosTest() {
+
+    }
+
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void obtenerUsuariosFavoritosPorCodigoTest(){
+        List<Usuario> usuarios= productoRepo.obtenerUsuariosFavoritosPorCodigo("1");
+        Assertions.assertEquals(1,usuarios.size());
+
+    }
+
+
 
 
 }

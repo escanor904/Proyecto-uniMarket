@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Repository
 public interface ProductoRepo extends JpaRepository<Producto,String>{
@@ -31,10 +33,14 @@ public interface ProductoRepo extends JpaRepository<Producto,String>{
     List<Usuario> listarUsuariosQueComentaronProducto(String codigo);
 
 
+
+
     @Query("SELECT p.codigo, p.nombre, COUNT(c.mensaje) FROM Producto p LEFT JOIN p.miComentario c GROUP BY p.codigo, p.nombre ORDER BY COUNT(c.mensaje) DESC")
     List<Object[]> listarProductosConMasComentarios();
 
 
+    @Query("select p.miUsuario from Producto p where p.codigo = :codigo")
+    Optional<Usuario> obtenerPropietarioProducto(String codigo);
 
     @Query(value = "SELECT p.codigo, p.nombre, COUNT(f.codigo) AS cantidadFavoritos " +
             "FROM Producto p " +
@@ -42,6 +48,9 @@ public interface ProductoRepo extends JpaRepository<Producto,String>{
             "GROUP BY p.codigo, p.nombre " +
             "ORDER BY cantidadFavoritos DESC")
     List<Object[]> listarProductosMasAgregadosFavoritos();
+
+    @Query("select u from Producto  p, IN (p.usuariosFavoritos) u where p.codigo = :codigo")
+    List<Usuario> obtenerUsuariosFavoritosPorCodigo(String codigo);
 
     //listarProductosValisdos
     //@Query("select new co.edu.uniquindio.proyecto.DTO.ProductoValido(p.nombre,p.descripcion,p.precio) from Producto p where p.fechaLimite < :fechaActual")

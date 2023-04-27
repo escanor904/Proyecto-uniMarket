@@ -4,10 +4,7 @@ package co.edu.uniquindio.proyecto.entidades;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
@@ -24,6 +21,7 @@ public class Producto implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     private String codigo;
+
 
     @NotBlank(message = "El nombre del producto es obligatorio")
     @Column(nullable = false,length = 100)

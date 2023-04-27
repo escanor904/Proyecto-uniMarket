@@ -40,6 +40,9 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
     @Query("select p from Usuario  u, IN (u.productosFavoritos) p where u.email = :email")
     List<Producto> obtenerFavoritosPorCorreo(String email);
 
+    @Query("select p from Usuario  u, IN (u.productosFavoritos) p where u.codigo = :codigo")
+    List<Producto> obtenerFavoritosPorCodigo(String codigo);
+
     //se trae el email de el usuarios
     //la respuesta a esto va a ser una lista de objetos
     @Query("select u.email,p from Usuario u join u.misProductos p")
@@ -54,6 +57,7 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
     //con inferencia de datos gracias a el framework de spring que es JPArepository
     List<Usuario>findAllByNombreContains(String nombre);
     List<Usuario>findAllByTelefono(String telefono);
+
     Optional<Usuario> findByEmail(String email);
     Optional<Usuario> findByUsername(String username);
     Optional<Usuario> findByEmailAndCodigo(String email,String password);
@@ -68,4 +72,6 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
     @Query("select u from Usuario u where u.codigo = :codigo")
     Usuario obtenerUsuarioPorCodigo(String codigo);
+
+
 }

@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface ProductoServicio {
 
-    Producto publicarProducto(Producto p) throws Exception;
 
+    Producto publicarProductoVender(Producto p,Usuario u) throws Exception;
+
+    Producto registrarProducto(Producto p) throws Exception;
     void actualizarProducto(Producto p) throws Exception;
 
     void eliminarProducto(String codigo) throws Exception;
@@ -24,6 +26,8 @@ public interface ProductoServicio {
      List<Producto> buscarProducto(String nombre, String [] producto);
 
      List<Producto> listarProductos(String codigoUsuario)throws Exception;
+
+
 
 
 }

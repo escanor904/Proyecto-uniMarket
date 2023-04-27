@@ -246,6 +246,16 @@ public class UsuarioTest {
 
     }
 
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void obtenerFavoritosPorCodigoTest(){
+        List<Producto>  favoritos= usuarioRepo.obtenerFavoritosPorCodigo("904");
+        Assertions.assertEquals(0,favoritos.size());
+
+    }
+
+
+
 
 
 

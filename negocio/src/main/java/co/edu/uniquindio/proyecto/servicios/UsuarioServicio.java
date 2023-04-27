@@ -15,6 +15,9 @@ public interface UsuarioServicio {
 
     Usuario obtenerUsuario(String codigo) throws Exception;
 
+    Usuario obtenerPropietarioProducto(String codigoProducto);
+
+
 
 
 

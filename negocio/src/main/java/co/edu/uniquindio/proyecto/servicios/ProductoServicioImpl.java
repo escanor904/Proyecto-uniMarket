@@ -1,13 +1,13 @@
 package co.edu.uniquindio.proyecto.servicios;
 
-import co.edu.uniquindio.proyecto.entidades.Categoria;
-import co.edu.uniquindio.proyecto.entidades.DetalleCompra;
-import co.edu.uniquindio.proyecto.entidades.Producto;
-import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
+import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,20 +16,41 @@ public class ProductoServicioImpl implements ProductoServicio{
 
     private final ProductoRepo productoRepo;
 
-    public ProductoServicioImpl(ProductoRepo productoRepo) {
+    private final UsuarioRepo usuarioRepo;
+    private final ComentarioRepo comentarioRepo;
+
+    public ProductoServicioImpl(ProductoRepo productoRepo,ComentarioRepo comentarioRepo,UsuarioRepo usuarioRepo) {
         this.productoRepo = productoRepo;
+        this.comentarioRepo=comentarioRepo;
+        this.usuarioRepo=usuarioRepo;
     }
 
     @Override
-    public Producto publicarProducto(Producto p) throws Exception {
-
-        try {
-            return productoRepo.save(p);
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
+    public Producto registrarProducto(Producto p) throws Exception {
+        Optional<Producto> buscado= productoRepo.findById(p.getCodigo());
+        if (buscado.isPresent()){
+            throw new Exception("El codigo del producto ya existe");
         }
 
+        return productoRepo.save(p);
     }
+
+    @Override
+    public Producto publicarProductoVender(Producto p, Usuario u) throws Exception {
+
+        Optional<Producto> buscado= productoRepo.findById(p.getCodigo());
+        if (buscado.isPresent()){
+            throw new Exception("El codigo del producto ya existe");
+        }
+
+        p.setMiUsuario(u);
+        return productoRepo.save(p);
+
+
+
+    }
+
+
 
     @Override
     public void actualizarProducto(Producto p) throws Exception {
@@ -59,17 +80,42 @@ public class ProductoServicioImpl implements ProductoServicio{
 
     @Override
     public void comentarProducto(String mensaje, Usuario usuario, Producto producto) throws Exception {
+        LocalDate ld = LocalDate.now();
+        Comentario comentario=new Comentario("1",mensaje,ld);
+        comentario.setMiUsuario(usuario);
+        comentario.setMiProducto(producto);
+    try {
+        comentarioRepo.save(comentario);
+    }catch (Exception e ){
+        e.getMessage();
+    }
+
+
+
+
 
     }
 
     @Override
     public void guardarProductoEnFavoritos(Producto producto, Usuario usuario) throws Exception {
 
+
+
+        List<Producto> favoritos = usuarioRepo.obtenerFavoritosPorCodigo(usuario.getCodigo());
+        List<Usuario>  usuariosFavoritos = productoRepo.obtenerUsuariosFavoritosPorCodigo(producto.getCodigo());
+        favoritos.add(producto);
+        usuariosFavoritos.add(usuario);
+        productoRepo.save(producto);
+        usuarioRepo.save(usuario);
+
     }
 
     @Override
     public void eliminarProductofavorito(Producto producto, Usuario usuario) throws Exception {
+        List<Producto> favoritos = usuarioRepo.obtenerFavoritosPorCodigo(usuario.getCodigo());
+        favoritos.remove(producto);
 
+        usuarioRepo.save(usuario);
     }
 
     @Override
