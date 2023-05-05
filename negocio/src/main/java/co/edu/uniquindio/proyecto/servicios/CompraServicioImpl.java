@@ -5,6 +5,7 @@ import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.CompraRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,17 @@ public class CompraServicioImpl implements CompraServicio{
         }
 
         return compraRepo.save(c);
+    }
+
+    @Override
+    public ArrayList<Compra> registrarCompraOCompras(ArrayList<Compra> compras) throws Exception {
+
+
+        ArrayList<Compra>salida=new ArrayList<>();
+        for (int i = 0; i <compras.size() ; i++) {
+           salida.add( registrarCompra(compras.get(i)));
+        }
+        return salida;
     }
 
     @Override

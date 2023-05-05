@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,8 +35,8 @@ public class Usuario extends Persona implements Serializable {
 
 
      //entidad propietaria entre usuario producto
-    @ManyToMany
-     private List<Producto> productosFavoritos;
+    @ManyToMany(cascade = CascadeType.ALL)
+     private List<Producto> productosFavoritos=new ArrayList<>();
 
      @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")

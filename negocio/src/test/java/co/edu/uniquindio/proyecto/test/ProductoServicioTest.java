@@ -17,7 +17,7 @@ import java.util.Optional;
 
 
 @SpringBootTest(classes = NegocioApplication.class)
-@Transactional
+//@Transactional
 public class ProductoServicioTest {
 
     @Autowired
@@ -64,13 +64,26 @@ public class ProductoServicioTest {
         }
     }
 
+
+    @Test
+    public void registrarProducto(){
+        LocalDate ldn = LocalDate.now();
+        LocalDate ld = LocalDate.of(2024,1,8);
+        Producto p = new Producto("2","televisor","televisor smart tv",400000,ldn,ld,20);
+
+        try {
+            productoServicio.registrarProducto(p);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Test
     public void comentarProductoTest(){
 
-        Usuario  u = new Usuario("904","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
+        Usuario  u = new Usuario("905","juan alonso","jalonso@gmail.com","3216758976","28#14-09","unialonso","Heropro.12");
 
         LocalDate ldn = LocalDate.now();
-        LocalDate ld = LocalDate.of(2020,1,8);
+        LocalDate ld = LocalDate.of(2024,1,8);
         Producto producto = new Producto("2","televisor","televisor smart tv",400000,ldn,ld,20);
 
 
@@ -88,6 +101,8 @@ public class ProductoServicioTest {
 
     }
 
+
+
     @Test
     public void guardarProductoEnFavoritosTest(){
 
@@ -103,31 +118,13 @@ public class ProductoServicioTest {
             productoServicio.registrarProducto(p);
 
             productoServicio.guardarProductoEnFavoritos(p,u);
+            //productoServicio.eliminarProductofavorito(p,u);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
     }
 
-    @Test
-    public void eliminarProductoDeFavoritosTest(){
 
-        Usuario  u = new Usuario("904","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
-
-        LocalDate ldn = LocalDate.now();
-        LocalDate ld = LocalDate.of(2024,1,8);
-        Producto p = new Producto("2","televisor","televisor smart tv",400000,ldn,ld,20);
-
-
-        try {
-            usuarioServicio.registrarUsuario(u);
-            productoServicio.registrarProducto(p);
-
-            productoServicio.guardarProductoEnFavoritos(p,u);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
 }

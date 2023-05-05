@@ -11,6 +11,7 @@ import java.util.Optional;
 public class UsuarioServicioImpl implements UsuarioServicio{
     private final UsuarioRepo usuarioRepo;
 
+
     public UsuarioServicioImpl(UsuarioRepo usuarioRepo) {
         this.usuarioRepo = usuarioRepo;
     }
@@ -87,6 +88,11 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 
     @Override
     public Usuario obtenerPropietarioProducto(String codigoProducto) {
+        return null;
+    }
+
+    @Override
+    public Usuario actualizarPassword(Usuario usuario) throws Exception {
         return null;
     }
 

@@ -81,7 +81,7 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Override
     public void comentarProducto(String mensaje, Usuario usuario, Producto producto) throws Exception {
         LocalDate ld = LocalDate.now();
-        Comentario comentario=new Comentario("1",mensaje,ld);
+        Comentario comentario=new Comentario("32",mensaje,ld);
         comentario.setMiUsuario(usuario);
         comentario.setMiProducto(producto);
     try {
@@ -99,12 +99,13 @@ public class ProductoServicioImpl implements ProductoServicio{
     @Override
     public void guardarProductoEnFavoritos(Producto producto, Usuario usuario) throws Exception {
 
+        if (producto==null || usuario==null){
+            throw new Exception("el producto o el usuario son nulos ");
+        }
 
+        producto.getUsuariosFavoritos().add(usuario);
+        usuario.getProductosFavoritos().add(producto);
 
-        List<Producto> favoritos = usuarioRepo.obtenerFavoritosPorCodigo(usuario.getCodigo());
-        List<Usuario>  usuariosFavoritos = productoRepo.obtenerUsuariosFavoritosPorCodigo(producto.getCodigo());
-        favoritos.add(producto);
-        usuariosFavoritos.add(usuario);
         productoRepo.save(producto);
         usuarioRepo.save(usuario);
 
@@ -112,10 +113,16 @@ public class ProductoServicioImpl implements ProductoServicio{
 
     @Override
     public void eliminarProductofavorito(Producto producto, Usuario usuario) throws Exception {
-        List<Producto> favoritos = usuarioRepo.obtenerFavoritosPorCodigo(usuario.getCodigo());
-        favoritos.remove(producto);
+        if (producto==null || usuario==null){
+            throw new Exception("el producto o el usuario son nulos ");
+        }
 
+        producto.getUsuariosFavoritos().remove(usuario);
+        usuario.getProductosFavoritos().remove(producto);
+
+        productoRepo.save(producto);
         usuarioRepo.save(usuario);
+
     }
 
     @Override

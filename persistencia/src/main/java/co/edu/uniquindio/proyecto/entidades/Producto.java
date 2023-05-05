@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -96,8 +97,8 @@ public class Producto implements Serializable {
     //estos son los usuarios que tienen el producto en favoritos
     //entidad inversa entre usuario y producto
     @ToString.Exclude
-    @ManyToMany(mappedBy = "productosFavoritos")
-    private List<Usuario> usuariosFavoritos;
+    @ManyToMany(mappedBy = "productosFavoritos", cascade = CascadeType.ALL)
+    private List<Usuario> usuariosFavoritos=new ArrayList<>();
 
 //se debe crear la relacion con el moderador
 
