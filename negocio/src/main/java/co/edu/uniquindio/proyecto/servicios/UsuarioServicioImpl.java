@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +12,9 @@ import java.util.Optional;
 public class UsuarioServicioImpl implements UsuarioServicio{
     private final UsuarioRepo usuarioRepo;
 
-
     public UsuarioServicioImpl(UsuarioRepo usuarioRepo) {
         this.usuarioRepo = usuarioRepo;
+
     }
 
     @Override
@@ -92,7 +93,15 @@ public class UsuarioServicioImpl implements UsuarioServicio{
     }
 
     @Override
-    public Usuario actualizarPassword(Usuario usuario) throws Exception {
+    public Usuario actualizarPassword(Usuario usuario,String nuevaPassword) throws Exception {
+        Optional buscado = usuarioRepo.findById(usuario.getCodigo());
+
+        if (buscado.isEmpty()){
+            throw new Exception("el ususario no existe en la base de datos");
+        }
+        //faltaria tener el link de la aplicacion para que se cambie la contrasena
+
+
         return null;
     }
 

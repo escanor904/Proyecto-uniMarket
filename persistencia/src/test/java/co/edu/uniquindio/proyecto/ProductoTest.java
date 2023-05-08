@@ -125,6 +125,19 @@ public class ProductoTest {
     }
 
 
+    @Test
+    @Sql("classpath:usuarios.sql")
+    public void buscarproductoPorNombre(){
+        List<Producto> productos = productoRepo.buscarProductoNombre("moto");
+         productos.forEach(p -> System.out.println(p));
+        //Assertions.assertEquals(1,usuarios.size());
+
+    }
+
+
+
+
+
 
 
 }

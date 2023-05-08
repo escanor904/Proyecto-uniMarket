@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -123,6 +124,13 @@ public class ProductoServicioTest {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Test
+    public void buscarProductosPorNombreTest(){
+
+        List<Producto> productos = productoServicio.buscarProductoPorNombre("lenovo",null);
+        productos.forEach(p -> System.out.println(p));
     }
 
 

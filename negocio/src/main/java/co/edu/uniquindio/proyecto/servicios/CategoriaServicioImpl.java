@@ -36,4 +36,13 @@ public class CategoriaServicioImpl implements CategoriaServicio {
     public Categoria actualizarcategoria(Categoria categoria) throws Exception {
     return null;
     }
+
+    @Override
+    public Categoria obtenerCategoria(String codigo) throws Exception {
+        Optional<Categoria> categoriaBuscada = categoriaRepo.findByCodigo(codigo);
+        if (categoriaBuscada.isEmpty()){
+            throw  new Exception("el codigo de la categoria no existe");
+        }
+        return categoriaBuscada.get();
+    }
 }

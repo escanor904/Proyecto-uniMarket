@@ -8,4 +8,6 @@ public interface CategoriaServicio {
     void eliminarCategoria(Categoria categoria)throws Exception;
     Categoria actualizarcategoria(Categoria categoria)throws Exception;
 
+    Categoria obtenerCategoria(String codigo) throws Exception;
+
 }

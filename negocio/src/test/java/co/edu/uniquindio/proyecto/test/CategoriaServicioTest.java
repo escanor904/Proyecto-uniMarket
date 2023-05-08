@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyecto.NegocioApplication;
 import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.servicios.CategoriaServicio;
 import co.edu.uniquindio.proyecto.servicios.CategoriaServicioImpl;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,6 +33,17 @@ public class CategoriaServicioTest {
             categoriaServicio.registrarCategoria(cat3);
             categoriaServicio.registrarCategoria(cat4);
 
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @Test
+    public void buscarCategoriaPorCodigoTest(){
+        try {
+            Categoria categoria =categoriaServicio.obtenerCategoria("301");
+            Assertions.assertNotNull(categoria);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
