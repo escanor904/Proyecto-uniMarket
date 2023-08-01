@@ -19,8 +19,8 @@ import java.util.List;
 public class DetalleCompra implements Serializable {
     @Id
     @EqualsAndHashCode.Include
-    @Column(length = 10)
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
     @Positive
     @Column(nullable = false)
@@ -35,6 +35,8 @@ public class DetalleCompra implements Serializable {
 
     @ManyToOne
     private Producto miProducto;
+
+
 
 
 }

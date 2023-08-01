@@ -20,7 +20,8 @@ public class ProductoModerador implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
     private String motivo;
 
     @Column(nullable = false)

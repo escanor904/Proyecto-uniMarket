@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -19,8 +16,8 @@ public class OpcionDetalleProducto {
 
     @Id
     @EqualsAndHashCode.Include
-    @Column(length = 10)
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
     @Column(length = 100,nullable = false)
     private String nombre;

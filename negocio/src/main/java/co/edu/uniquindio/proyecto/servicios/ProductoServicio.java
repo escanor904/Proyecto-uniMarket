@@ -1,7 +1,9 @@
 package co.edu.uniquindio.proyecto.servicios;
 
+import co.edu.uniquindio.proyecto.DTO.ProductoCarrito;
 import co.edu.uniquindio.proyecto.entidades.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ProductoServicio {
@@ -12,20 +14,23 @@ public interface ProductoServicio {
     Producto registrarProducto(Producto p) throws Exception;
     void actualizarProducto(Producto p) throws Exception;
 
-    void eliminarProducto(String codigo) throws Exception;
+    void eliminarProducto(Integer codigo) throws Exception;
 
-    Producto obtenerProducto(String codigo) throws Exception;
+    Producto obtenerProducto(Integer codigo) throws Exception;
     List<Producto> listarProductosPorCategoria(Categoria categoria);
 
-    void comentarProducto(String mensaje,Usuario usuario,Producto producto) throws Exception;
+    void comentarProducto(Comentario comentario) throws Exception;
 
     void guardarProductoEnFavoritos(Producto producto,Usuario usuario) throws Exception;
     void eliminarProductofavorito(Producto producto,Usuario usuario)throws Exception;
-    void comprarProductos(DetalleCompra detalleCompra,Producto producto);
+    Compra comprarProductos(Usuario usuaario, ArrayList<ProductoCarrito> productos , MedioDePago medioDePago) throws Exception;
 
      List<Producto> buscarProductoPorNombre(String nombre, String [] producto);
 
-     List<Producto> listarProductos(String codigoUsuario)throws Exception;
+     List<Producto> listarProductos(String codigoUsuario);
+
+    List<Producto> listarProductos();
+
 
 
 

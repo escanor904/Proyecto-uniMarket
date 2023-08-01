@@ -27,13 +27,17 @@ public class Persona implements Serializable  {
 
     @Column(nullable = false,length = 100)
     @Length(max = 150)
+    @NotBlank
     private String nombre;
 
     @Column(nullable = false,length = 150,unique = true)
     @Email(message = "Escriba un email valido")
+    @NotBlank
     private String email;
 
     @Column(nullable = false,length = 20)
+    @Length(max = 100)
+    @NotBlank
     private String password;
 
 

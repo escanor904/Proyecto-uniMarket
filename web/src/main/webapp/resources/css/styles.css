@@ -1,0 +1,128 @@
+.icon-menu{
+    font-size: 2rem;
+    margin-right: 10px
+
+}
+.imagen-producto{
+    max-width: 150px;
+}
+
+.item-pro{
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+.cajon{
+display: inline-block;
+}
+.cajon:hover{
+    background: yellow;
+}
+
+body {
+    background-color: #f7f6f6
+}
+
+.card {
+
+    border: none;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    border-radius: 4px;
+}
+
+
+.dots{
+
+    height: 4px;
+    width: 4px;
+    margin-bottom: 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.badge{
+
+    padding: 7px;
+    padding-right: 9px;
+    padding-left: 16px;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.user-img{
+
+    margin-top: 4px;
+}
+
+.check-icon{
+
+    font-size: 17px;
+    color: #c3bfbf;
+    top: 1px;
+    position: relative;
+    margin-left: 3px;
+}
+
+.form-check-input{
+    margin-top: 6px;
+    margin-left: -24px !important;
+    cursor: pointer;
+}
+
+
+.form-check-input:focus{
+    box-shadow: none;
+}
+
+
+.icons i{
+
+    margin-left: 8px;
+}
+.reply{
+
+    margin-left: 12px;
+}
+
+.reply small{
+
+    color: #b7b4b4;
+
+}
+
+
+.reply small:hover{
+
+    color: green;
+    cursor: pointer;
+
+}
+
+.box, .sample-layout>div {
+
+}
+
+.main-product-image img {
+    max-width:90%
+}
+.box, .box-stretched{
+    max-width: 640px;
+    width: 80%;
+}
+
+.contenedor{
+    width: 200px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+#info-sesion{
+    position: relative;
+
+}
+
+#info-sesion > *{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+

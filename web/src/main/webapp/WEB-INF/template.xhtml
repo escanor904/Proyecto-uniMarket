@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><ui:insert name="title">Plantilla</ui:insert></title>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+</h:head>
+<h:body>
+    <div id="header">
+
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <a href="/" title="Bootstrap" class="navbar-brand">
+
+                        <img src="/uploads/logo.png" class="store-image" alt="Unimarket" />
+
+                    </a>
+
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarContainer">
+
+                        <ul class="nav navbar-nav float-right nav-top">
+                            <li  jsf:rendered="#{seguridadBean.autenticado}">
+                                <a  id="cart-link" href="/usuario/carrito.xhtml" class="trsn nav-link" title="View/Edit Cart" >
+                                    <i class="pi pi-shopping-cart"></i>
+                                    <span id="nav-bar-cart"> Carrito </span>
+                                </a>
+                            </li>
+
+                            <h:form>
+                                <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 input-search ui-inputgroup">
+                                    <p:inputText placeholder="que producto esta buscando?"  style="width: 300px" required="true"
+                                                 value="#{busquedaBean.busqueda}"/>
+                                    <p:commandButton icon="pi pi-search" action="#{busquedaBean.buscar()}"/>
+
+                                </div>
+                            </h:form>
+
+
+
+                        </ul>
+
+
+                        <h:form rendered="#{!seguridadBean.autenticado}">
+
+                                <p:commandButton value="login" styleClass="btn btn-light  me-2" onclick="PF('login').show()"/>
+                                <p:commandButton value="Registrar usuario" styleClass="btn btn-outline-light me-2" action="registrar_usuario?faces-redirect=true"/>
+
+
+                        </h:form>
+
+                        <div id="info-sesion" jsf:rendered="#{seguridadBean.autenticado}" >
+
+                            <h:form>
+                                <p:commandButton value="Cerrar sesion" styleClass="btn btn-outline-light me-2" action="#{seguridadBean.cerrarSesion()}"/>
+
+                            </h:form>
+
+                        </div>
+
+
+
+                        <p:dialog header="Iniciar sesión" showEffect="fade" widgetVar="login" modal="true"
+                                  rendered="#{!seguridadBean.autenticado}" >
+                            <h:form >
+                            <h:panelGrid columns="3" cellpadding="5">
+                                <p:outputLabel for="email_login" value="Email:" />
+
+                                <p:inputText id="email_login" value="#{seguridadBean.email}" required="true" />
+                                <p:message for="email_login" />
+                                <p:outputLabel for="password_login" value="Password:" />
+                                <p:password id="password_login" value="#{seguridadBean.password}" required="true"
+                                />
+                                <p:message for="password_login" />
+                            </h:panelGrid>
+                            <p:commandButton value="Iniciar Sesión" action="#{seguridadBean.iniciarSesion}"
+                                             styleClass="mt-4" update="@form" icon="pi pi-sign-in" iconPos="left" />
+                            <p:growl for="login-bean" showDetail="true" />
+                            </h:form>
+                        </p:dialog>
+
+
+
+                    </div>
+                </div>
+            </nav>
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="navbarsContainer-2">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item  active">
+                                <a href="/index.xhtml"  title="Inicio" class="level-1 trsn nav-link" >Inicio</a>
+
+                            </li>
+                            <li class="nav-item  " jsf:rendered="#{seguridadBean.autenticado}">
+                                <a href="/usuario/crear_producto.xhtml"  title="About Us" class="level-1 trsn nav-link"  >Vender</a>
+
+                            </li>
+                            <li class="nav-item  " jsf:rendered="#{seguridadBean.autenticado}">
+                                <a href="#"  title="Blog" class="level-1 trsn nav-link"  >compras</a>
+
+                            </li>
+                            <li class="nav-item flex-shrink-0 " jsf:rendered="#{seguridadBean.autenticado}">
+
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <ul class="nav  vav-item navbar-right" jsf:rendered="#{seguridadBean.autenticado}">
+
+                        <a href="/usuario/perfil.xhtml" title="Perfil" class="navbar-brand"  >
+                            <img src="/uploads/usuarioicon.jpg" alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"  style="width: 35px; height: 35px;"/>
+                            <span style="color: #6c757d">#{seguridadBean.usuarioSesion.nombre}</span>
+                        </a>
+                    </ul>
+                </div>
+
+            </nav>
+
+        </div>
+
+
+
+
+    <div id="content">
+        <div class="container">
+            <ui:insert name="content">Contenido</ui:insert>
+        </div>
+
+    </div>
+    <div id="footer" class="footer mt-5">
+        <ui:insert name="footer">
+            <div class="py-4 bg-light" align="center">
+                <div class="justify-content-center">
+                    <div class="col-10">
+                        <span>Universidad del Quindío - Programación avanzada - 2023</span>
+                    </div>
+                </div>
+            </div>
+        </ui:insert>
+    </div>
+</h:body>
+</html>

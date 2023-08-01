@@ -102,10 +102,13 @@ public class UsuarioServicioTest {
      */
     @Test
     public void inicioSesionTest(){
-        Usuario  u = new Usuario("904","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
+       // Usuario  u = new Usuario("905","mario contreras","mario@gmail.com","3216758976","28#14-09","unimario","Heropro.12");
         try {
-            usuarioServicio.registrarUsuario(u);
-            usuarioServicio.iniciarSesion("unimario","Heropro.12");
+         //   usuarioServicio.registrarUsuario(u);
+            Usuario resultado =usuarioServicio.iniciarSesion("escanor904@gmail.com","123");
+
+            Assertions.assertNotNull(resultado);
+            System.out.println(resultado);
 
 
         } catch (Exception e) {
@@ -126,7 +129,9 @@ public class UsuarioServicioTest {
             //throw new RuntimeException(e);
             Assertions.assertTrue(false);
         }
+
     }
+
 
 
 

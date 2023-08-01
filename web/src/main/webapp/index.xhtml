@@ -7,55 +7,60 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Mi primera imagen</title>
-</h:head>
-<h:body>
-    <div id="header">
-        <header class="p-3 bg-dark text-white">
-            <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        <i class="pi pi-shopping-cart" style="font-size: 2rem; margin-right: 10px"/>
-                    </a>
+<ui:composition template="WEB-INF/template.xhtml">
+<ui:define name="title">Home</ui:define>
 
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-                        <li><a href="index.xhtml" class="nav-link px-2 text-secondary">Inicio</a></li>
-                        <li><a href="crear_producto.xhtml" class="nav-link px-2 text-white">Crear Producto</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-                    </ul>
+            <ui:define name="content">
 
-                    <h:form>
 
-                        <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 input-search ui-inputgroup" >
-                            <p:inputText placeholder="que producto esta buscando?" required="true" value="#{busquedaBean.busqueda}"/>
-                            <p:commandButton icon="pi pi-search" action="#{busquedaBean.buscar()}"/>
+            <h1>Lista de productos</h1>
+            <h:form>
+                <p:dataView value="#{inicioBean.productos}"  var="producto" gridIcon="pi pi-th-large"
+                            listIcon="pi pi-bars">
+                    <p:dataViewGridItem>
+                        <div class="card">
+                            <img src="/uploads/#{producto.imagenPrincipal}"  class="card-img-top"  alt="..." />/>
+                            <div class="card-body">
+                                <h5 class="card-title">#{producto.nombre}</h5>
+                                <p class="card-text">$#{producto.precio}</p>
+                                <hr/>
+                                <p:commandButton value="Ver detalle" styleClass="ui-button-raised"  icon="pi pi-arrow-right" iconPos="right"/>
+
+                            </div>
                         </div>
-                    </h:form>
+                    </p:dataViewGridItem>
+                    <p:dataViewListItem>
+                        <div class="row d-flex">
+                            <div class="col-lg-2 col-md-1" style="text-align: center">
+                                <p:graphicImage url="/uploads/#{producto.imagenPrincipal}"  styleClass="imagen-producto" />
+                            </div>
+                            <div class="col-lg-8 col-md-1 align-self-center">
+                                <p:outputPanel>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputText value="Nombre:"/>
+                                        <h:outputText value="#{producto.nombre}" style="font-weight:bold"/>
+                                        <h:outputText value="Precio:"/>
+                                        <h:outputText value="#{producto.precio}"/>
+                                        <h:outputText value="Categorías:"/>
+                                        <h:outputText value="#{producto.misCategorias}"/>
 
-                    <div class="text-end">
-                        <button onclick="" type="button"  class="btn btn-outline-light me-2">Registrar Usuario</button>
-                        <button type="button" class="btn btn-warning">Sign-up</button>
-                    </div>
-                </div>
-            </div>
-        </header>
+                                    </h:panelGrid>
+                                </p:outputPanel>
+                            </div>
+                            <div class="col-lg-2 col-md-1 align-self-center">
+                                <p:commandButton value="Ver detalle" styleClass="ui-button-raised"  icon="pi pi-arrow-right" iconPos="right" action="#{inicioBean.irADetelle(producto.codigo)}"/>
+
+                            </div>
+                        </div>
+                    </p:dataViewListItem>
 
 
 
-        <ul>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"/>
-        </ul>
-    </div>
-    <div id="content">
 
+                </p:dataView>
+            </h:form>
+            </ui:define>
 
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-</h:body>
+</ui:composition>
 </html>

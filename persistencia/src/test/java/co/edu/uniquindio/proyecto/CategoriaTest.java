@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto;
 
 import co.edu.uniquindio.proyecto.entidades.Categoria;
-import co.edu.uniquindio.proyecto.entidades.SubCategoria;
 import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
-import co.edu.uniquindio.proyecto.repositorios.SubCategoriaRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
@@ -23,14 +22,12 @@ public class CategoriaTest {
     @Autowired
     private CategoriaRepo categoriaRepo;
 
-    @Autowired
-    private SubCategoriaRepo subCategoriaRepo;
+
 
     //--------------------------------------Crud---------------------------------------------------------------
     @Test
     public void crearCategoria() {
         Categoria categoria = new Categoria();
-        categoria.setCodigo("306");
         categoria.setNombre("Tecnologia");
 
         categoriaRepo.save(categoria);
@@ -43,7 +40,6 @@ public class CategoriaTest {
     @Test
     public void actualizarCategoria() {
         Categoria categoria = new Categoria();
-        categoria.setCodigo("306");
         categoria.setNombre("Tecnologia");
 
         categoriaRepo.save(categoria);
@@ -62,7 +58,6 @@ public class CategoriaTest {
     @Test
     public void eliminarCategoria() {
         Categoria categoria = new Categoria();
-        categoria.setCodigo("306");
         categoria.setNombre("Tecnologia");
 
         categoriaRepo.save(categoria);
@@ -102,29 +97,37 @@ public class CategoriaTest {
 
     }
 
-
-
     @Test
     @Sql("classpath:usuarios.sql")
-    public void obtenerCategoriasYSubCategorias() {
-        List<Categoria> categorias = categoriaRepo.findAll(); // Obtener todas las categorías
-        assertNotNull(categorias); // Asegurarse de que la lista de categorías no sea nula
+    public void obtenerCategoriaPOrCodigoTest(){
+         Optional<Categoria> buscada=categoriaRepo.findByCodigo(301);
+         Assertions.assertNotNull(buscada);
 
-        // Iterar por cada categoría
-        for (Categoria categoria : categorias) {
-            System.out.println("Categoría: " + categoria.getNombre());
-            System.out.println("Subcategorías:");
-
-            List<SubCategoria> subCategorias = subCategoriaRepo.obtenerSubCategoriaPorCodigo(categoria.getCodigo());
-            assertNotNull(subCategorias); // Asegurarse de que la lista de subcategorías no sea nula
-
-            // Imprimir las subcategorías de la categoría actual
-            for (SubCategoria subCategoria : subCategorias) {
-                System.out.println(subCategoria);
-            }
-
-            System.out.println("--------------------");
-        }
     }
+
+
+
+//    @Test
+//    @Sql("classpath:usuarios.sql")
+//    public void obtenerCategoriasYSubCategorias() {
+//        List<Categoria> categorias = categoriaRepo.findAll(); // Obtener todas las categorías
+//        assertNotNull(categorias); // Asegurarse de que la lista de categorías no sea nula
+//
+//        // Iterar por cada categoría
+//        for (Categoria categoria : categorias) {
+//            System.out.println("Categoría: " + categoria.getNombre());
+//            System.out.println("Subcategorías:");
+//
+//            List<SubCategoria> subCategorias = subCategoriaRepo.obtenerSubCategoriaPorCodigo(categoria.getCodigo());
+//            assertNotNull(subCategorias); // Asegurarse de que la lista de subcategorías no sea nula
+//
+//            // Imprimir las subcategorías de la categoría actual
+//            for (SubCategoria subCategoria : subCategorias) {
+//                System.out.println(subCategoria);
+//            }
+//
+//            System.out.println("--------------------");
+//        }
+//    }
 
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,9 +19,9 @@ import java.util.List;
 public class Compra implements Serializable {
 
     @Id
-    @Column(length = 10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private String codigo;
+    private Integer codigo;
 
 
     @Column(nullable = false,columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -29,7 +30,7 @@ public class Compra implements Serializable {
 
     @Column(nullable = false)
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Float valorTotal;
+    private Float valorTotal=0F;
 
     @Enumerated(EnumType.STRING)
     private MedioDePago medioDePago;
@@ -38,16 +39,18 @@ public class Compra implements Serializable {
     //entidad propietaria
 
     @OneToMany(mappedBy = "miCompra")
-    private List<DetalleCompra> misDetalleCompras;
+    private List<DetalleCompra> misDetalleCompras=new ArrayList<>();
 
 
-    public Compra(String codigo, LocalDate fechaCreacion, Float valorTotal, MedioDePago medioDePago, Usuario miUsuario) {
-        this.codigo = codigo;
+    public Compra( LocalDate fechaCreacion, MedioDePago medioDePago, Usuario miUsuario) {
+
         this.fechaCreacion = fechaCreacion;
-        this.valorTotal = valorTotal;
         this.medioDePago = medioDePago;
         this.miUsuario = miUsuario;
     }
+
+
+
 }
 
 

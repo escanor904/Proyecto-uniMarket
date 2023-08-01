@@ -34,7 +34,7 @@ public class CompraServicioTest {
         // Registrar el usuario antes de crear la compra (si aún no está registrado)
         usuarioServicio.registrarUsuario(usuario);
         // Crear un objeto Compra con algunos datos de ejemplo
-        Compra compra = new Compra("456", LocalDate.now(), 100.0F, MedioDePago.MASTERCARD,usuario);
+        Compra compra = new Compra( LocalDate.now(), 100.0F, MedioDePago.MASTERCARD,usuario);
         try {
             // Registrar la compra
             Compra resultado = compraServicio.registrarCompra(compra);
@@ -59,7 +59,7 @@ public class CompraServicioTest {
         usuarioServicio.registrarUsuario(usuario);
 
         // Crear una Compra con algunos datos de ejemplo
-        Compra compra = new Compra("456", LocalDate.now(), 100.0F, MedioDePago.MASTERCARD, usuario);
+        Compra compra = new Compra( LocalDate.now(), 100.0F, MedioDePago.MASTERCARD, usuario);
 
         // Registrar la compra
         Compra resultado = compraServicio.registrarCompra(compra);
@@ -94,7 +94,7 @@ public class CompraServicioTest {
         usuarioServicio.registrarUsuario(usuario);
 
         // Crear una Compra con algunos datos de ejemplo
-        Compra compra = new Compra("456", LocalDate.now(), 100.0F, MedioDePago.MASTERCARD, usuario);
+        Compra compra = new Compra(LocalDate.now(), 100.0F, MedioDePago.MASTERCARD, usuario);
 
         // Registrar la compra
         Compra resultado = compraServicio.registrarCompra(compra);
@@ -121,8 +121,8 @@ public class CompraServicioTest {
         Usuario usuario1 = new Usuario("910", "Mario", "mario2@gmail.com", "3216758976", "28#14-09", "unimario", "Heropro.12");
         Usuario usuario2 = new Usuario("911", "Luigi", "luigi@gmail.com", "3216758977", "28#14-10", "uniluigi", "Heropro.12");
 
-        Compra compra1 = new Compra("457", LocalDate.now(), 100.0F, MedioDePago.MASTERCARD, usuario1);
-        Compra compra2 = new Compra("789", LocalDate.now(), 50.0F, MedioDePago.TRANSFERENCIA_BANCARIA_PSE, usuario2);
+        Compra compra1 = new Compra( LocalDate.now(), 100.0F, MedioDePago.MASTERCARD, usuario1);
+        Compra compra2 = new Compra( LocalDate.now(), 50.0F, MedioDePago.TRANSFERENCIA_BANCARIA_PSE, usuario2);
 
         try {
             // Registrar las compras
@@ -139,6 +139,26 @@ public class CompraServicioTest {
         } catch (Exception e) {
             // Manejar cualquier excepción lanzada durante la prueba
             Assertions.fail("La prueba ha fallado: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void registrarCompra() throws Exception {
+
+        // Crear un objeto Compra con algunos datos de ejemplo
+        Compra compra = new Compra( LocalDate.now(), 100.0F, MedioDePago.MASTERCARD,null);
+        compra.setCodigo(12);
+        try {
+            // Registrar la compra
+            Compra resultado = compraServicio.registrarCompra(compra);
+
+            // Verificar que la compra devuelta no sea nula
+            Assertions.assertNotNull(resultado);
+
+            // Verificar que la compra devuelta tenga un ID asignado
+            //Assertions.assertNotNull(resultado.getCodigo());
+        } catch (Exception e) {
+            Assertions.fail(e.getMessage());
         }
     }
 

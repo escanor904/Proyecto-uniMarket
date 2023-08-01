@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ComentarioRepo extends JpaRepository<Comentario,String> {
+public interface ComentarioRepo extends JpaRepository<Comentario,Integer> {
 
 
     Optional<Moderador> findByCodigo(String codigo);

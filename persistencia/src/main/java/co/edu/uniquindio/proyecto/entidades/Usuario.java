@@ -30,12 +30,13 @@ public class Usuario extends Persona implements Serializable {
 
      @ToString.Exclude
      @OneToMany(mappedBy = "miUsuario")
-     private List<Producto> misProductos ;
+     private List<Producto> misProductos =new ArrayList<>();
      //entidad inversa
 
 
      //entidad propietaria entre usuario producto
-    @ManyToMany(cascade = CascadeType.ALL)
+     @ToString.Exclude
+     @ManyToMany
      private List<Producto> productosFavoritos=new ArrayList<>();
 
      @ToString.Exclude

@@ -18,7 +18,8 @@ import java.util.List;
 public class Estado implements Serializable {
 
     @Id
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
 
     @Column(nullable = false,length = 100)

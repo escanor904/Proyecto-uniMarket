@@ -15,12 +15,12 @@ public interface CompraServicio {
 
     Compra actualizarCompra(Compra c) throws Exception;
 
-    void eliminarCompra(String codigo) throws Exception;
+    void eliminarCompra(Integer codigo) throws Exception;
 
     List<Compra> listarCompras();
 
-    Compra buscarCompraPorCodigo(String codigo) throws Exception;
+    Compra buscarCompraPorCodigo(Integer codigo) throws Exception;
 
-    Compra obtenerCompra(String codigo) throws Exception;
+    Compra obtenerCompra(Integer codigo) throws Exception;
 
 }

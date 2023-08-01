@@ -21,10 +21,10 @@ public class CategoriaServicioTest {
 
     @Test
     public void registrarcategoria () {
-        Categoria cat1= new Categoria("301","VEHICULOS");
-        Categoria cat2= new Categoria("302","CELULARES");
-        Categoria cat3= new Categoria("303","JOYAS");
-        Categoria cat4= new Categoria("304","COMPUTADORES");
+        Categoria cat1= new Categoria(301,"VEHICULOS");
+        Categoria cat2= new Categoria(302,"CELULARES");
+        Categoria cat3= new Categoria(303,"JOYAS");
+        Categoria cat4= new Categoria(304,"COMPUTADORES");
 
 
         try {
@@ -42,7 +42,7 @@ public class CategoriaServicioTest {
     @Test
     public void buscarCategoriaPorCodigoTest(){
         try {
-            Categoria categoria =categoriaServicio.obtenerCategoria("301");
+            Categoria categoria =categoriaServicio.obtenerCategoria(301);
             Assertions.assertNotNull(categoria);
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -1,21 +1,18 @@
 package co.edu.uniquindio.proyecto.repositorios;
 
-import co.edu.uniquindio.proyecto.DTO.ProductoValido;
-import co.edu.uniquindio.proyecto.entidades.Imagen;
+import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.Producto;
-import co.edu.uniquindio.proyecto.entidades.SubCategoria;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Repository
-public interface ProductoRepo extends JpaRepository<Producto,String>{
+public interface ProductoRepo extends JpaRepository<Producto,Integer>{
 
     @Query("select p.miUsuario.nombre from Producto p where p.codigo = :codigo")
     String obtenerNombreDelVendedor(String codigo);
@@ -54,6 +51,10 @@ public interface ProductoRepo extends JpaRepository<Producto,String>{
 
     @Query("select p from Producto p where p.nombre like concat('%',:nombre,'%')")
     List<Producto> buscarProductoNombre(String nombre);
+
+    @Query("select p from Producto p where :categoria member of p.misCategorias ")
+    List<Producto> listarProductoPorCategoria(Categoria categoria);
+
 
     //listarProductosValisdos
     //@Query("select new co.edu.uniquindio.proyecto.DTO.ProductoValido(p.nombre,p.descripcion,p.precio) from Producto p where p.fechaLimite < :fechaActual")

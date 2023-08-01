@@ -18,8 +18,8 @@ public class DetalleDeProducto implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id
-    @Column(length = 10)
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
 
     @Column(length = 100,nullable = false)

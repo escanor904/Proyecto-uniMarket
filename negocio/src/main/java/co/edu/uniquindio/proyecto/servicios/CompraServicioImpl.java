@@ -50,7 +50,7 @@ public class CompraServicioImpl implements CompraServicio{
     }
 
     @Override
-    public void eliminarCompra(String codigo) throws Exception {
+    public void eliminarCompra(Integer codigo) throws Exception {
         Optional<Compra> buscado = compraRepo.findById(codigo);
         if (buscado.isEmpty()){
             throw new Exception("La compra con código " + codigo + " no existe");
@@ -65,7 +65,7 @@ public class CompraServicioImpl implements CompraServicio{
     }
 
     @Override
-    public Compra buscarCompraPorCodigo(String codigo) throws Exception {
+    public Compra buscarCompraPorCodigo(Integer codigo) throws Exception {
         Optional<Compra> buscado = compraRepo.findById(codigo);
         if (buscado.isEmpty()) {
             throw new Exception("La compra con código " + codigo + " no existe");
@@ -75,7 +75,7 @@ public class CompraServicioImpl implements CompraServicio{
     }
 
     @Override
-    public Compra obtenerCompra(String codigo) throws Exception {
+    public Compra obtenerCompra(Integer codigo) throws Exception {
         Optional<Compra> compraExistente = compraRepo.findById(codigo);
         if (!compraExistente.isPresent()) {
             throw new Exception("La compra con el código " + codigo + " no existe");

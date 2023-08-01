@@ -134,6 +134,21 @@ public class ProductoTest {
 
     }
 
+    @Test
+    //@Sql("classpath:usuarios.sql")
+    public void registrarProductoTest(){
+
+        Producto producto = new Producto("camara","lala",200000,LocalDateTime.now(),LocalDateTime.now().plusMonths(1),1);
+
+
+        Producto p=productoRepo.save(producto);
+        System.out.println(producto);
+
+        Assertions.assertNotNull(p);
+
+    }
+
+
 
 
 

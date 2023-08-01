@@ -3,11 +3,9 @@ package co.edu.uniquindio.proyecto.entidades;
 import lombok.*;
 import net.bytebuddy.implementation.bind.annotation.Empty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,25 +16,23 @@ import java.util.List;
 @ToString
 public class Categoria implements Serializable {
     @Id
-    @Column(length = 10)
     @EqualsAndHashCode.Include
-    private String codigo;
+    private Integer codigo;
 
 
     @Column(length = 100,nullable = false)
     private String nombre;
 
-    @OneToMany(mappedBy = "miCategoria")
-    private List<Producto> misProductos;
-    //entidad  inversa
-
-    @OneToMany(mappedBy = "miCategoria")
-    private List<SubCategoria> miSubCategorias;
-    //entidad inversa
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "misCategorias")
+    private List<Producto> misProductos=new ArrayList<>();
+    //entidad propietaria necesito de una categoria para poder crear un producto
 
 
-    public Categoria(String codigo, String nombre) {
-        this.codigo = codigo;
+
+
+    public Categoria(Integer codigo, String nombre) {
+        this.codigo=codigo;
         this.nombre = nombre;
     }
 }

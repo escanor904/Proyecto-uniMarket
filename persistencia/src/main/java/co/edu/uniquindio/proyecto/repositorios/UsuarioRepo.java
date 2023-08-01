@@ -60,12 +60,13 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
 
     Optional<Usuario> findByEmail(String email);
     Optional<Usuario> findByUsername(String username);
-    Optional<Usuario> findByEmailAndCodigo(String email,String password);
+    Optional<Usuario> findByEmailAndCodigo(String email,String codigo);
 
-    Optional<Usuario> findByUsernameAndPassword(String username,String password);
+   
 
 
     Optional<Usuario> findByNombre(String nombre);
+
 
     Page<Usuario> findAllBy(Pageable paginador);
 
@@ -73,5 +74,7 @@ public interface UsuarioRepo extends JpaRepository<Usuario,String> {
     @Query("select u from Usuario u where u.codigo = :codigo")
     Usuario obtenerUsuarioPorCodigo(String codigo);
 
+
+    Optional<Usuario> findByEmailAndPassword(String email, String password);
 
 }

@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CompraRepo extends JpaRepository<Compra,String> {
+public interface CompraRepo extends JpaRepository<Compra,Integer> {
     //consulta que dado el codigo de una ciudad retorne la lista de los detalles de esa compra
 
     @Query("select d from Compra c INNER JOIN c.misDetalleCompras d where c.codigo = :codigo  ")
-    List<DetalleCompra> detallesCompraPorCodigoDeCompra(String codigo);
+    List<DetalleCompra> detallesCompraPorCodigoDeCompra(Integer codigo);
 
     @Query("SELECT c.miUsuario.codigo, COUNT(c) FROM Compra c GROUP BY c.miUsuario.codigo ORDER BY COUNT(c) DESC")
     List<Object[]> listarUsuarioConMasCompras();

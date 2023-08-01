@@ -35,7 +35,7 @@ public interface CategoriaRepo extends JpaRepository<Categoria,String> {
 
 
 
-    Optional<Categoria> findByCodigo(String codigo);
+    Optional<Categoria> findByCodigo(Integer codigo);
     //con inferencia de datos gracias a el framework de spring que es JPArepository
     List<Categoria>findAllByNombreContains(String nombre);
     Page<Categoria> findAllBy(Pageable paginador);

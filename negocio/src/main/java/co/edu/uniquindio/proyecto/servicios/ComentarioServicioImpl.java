@@ -19,7 +19,7 @@ public class ComentarioServicioImpl implements ComentarioServicio {
 
     @Override
     public Comentario resgistrarComentario(Comentario c) throws Exception {
-        Optional<Moderador> buscado = comentarioRepo.findByCodigo(c.getCodigo());
+        Optional<Moderador> buscado = comentarioRepo.findByCodigo(c.getCodigo()+"");
         if (buscado.isPresent()) {
             throw new Exception("El id electrónico ya está registrado");
         }

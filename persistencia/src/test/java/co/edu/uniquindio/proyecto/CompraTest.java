@@ -40,7 +40,6 @@ public class CompraTest {
         Compra compra = new Compra();
 
         // Asignar valores predeterminados a los campos de la entidad
-        compra.setCodigo("123");
         compra.setValorTotal(100000F);
         compra.setMedioDePago(MedioDePago.EFECTIVO_EN_PUNTO_DE_PAGO);
 
@@ -63,7 +62,6 @@ public class CompraTest {
         Compra compra = new Compra();
 
         // Asignar valores predeterminados a los campos de la entidad
-        compra.setCodigo("123");
         compra.setValorTotal(100000F);
         compra.setMedioDePago(MedioDePago.EFECTIVO_EN_PUNTO_DE_PAGO);
 
@@ -91,7 +89,6 @@ public class CompraTest {
         Compra compra = new Compra();
 
         // Asignar valores predeterminados a los campos de la entidad
-        compra.setCodigo("123");
         compra.setValorTotal(100000F);
         compra.setMedioDePago(MedioDePago.EFECTIVO_EN_PUNTO_DE_PAGO);
 

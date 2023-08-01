@@ -76,8 +76,18 @@ public class UsuarioServicioImpl implements UsuarioServicio{
     }
 
     @Override
-    public Usuario iniciarSesion(String username, String password) throws Exception {
-    return      usuarioRepo.findByUsernameAndPassword(username,password).orElseThrow(() -> new Exception ("los datos de autenticacion son incorrectos"));
+    public Usuario iniciarSesion(String email, String password) throws Exception {
+        try {
+            Usuario salida = usuarioRepo.findByEmailAndPassword(email, password).get();
+
+            if (salida!=null){
+                return salida;
+            }else {
+                throw new Exception("los datos de autenticacion son incorrectos");
+            }
+        }catch (Exception e){
+            throw new Exception("los datos de autenticacion son incorrectos");
+        }
 
 
     }
