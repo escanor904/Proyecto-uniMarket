@@ -9,22 +9,21 @@ import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.io.IOUtils;
-import org.primefaces.component.fileupload.FileUpload;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.jsoup.Jsoup;
+
 
 @Component
 @ViewScoped
@@ -69,6 +68,9 @@ public class ProductoBean implements Serializable {
                 producto.setFechaCreacion(LocalDateTime.now());
                 producto.setFechaLimite(LocalDateTime.now().plusMonths(1));
                 producto.setMisImagens(imagenes);
+                //esta linea me permite limpiar el texto de las etiquetas html
+                producto.setDescripcion(Jsoup.parse(producto.getDescripcion()).text());
+
                 productoServicio.registrarProducto(producto);
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "La creacion del producto fue exitosa");
                 FacesContext.getCurrentInstance().addMessage("msj-bean", msg);

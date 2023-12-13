@@ -11,6 +11,41 @@
     <ui:define name="title">Mis compras</ui:define>
     <ui:define name="content">
 
+        <h1>Lista de Compras</h1>
+        <h:form>
+            <p:dataView value="#{compraBean.detalleCompras}"  var="compra" gridIcon="pi pi-th-large"
+                        listIcon="pi pi-bars">
+                <p:dataViewListItem>
+                    <div class="row d-flex">
+                        <div class="col-lg-2 col-md-1" style="text-align: center">
+                            <p:graphicImage url="/uploads/#{compra.miProducto.imagenPrincipal}"  styleClass="imagen-producto" />
+                        </div>
+                        <div class="col-lg-8 col-md-1 align-self-center">
+                            <p:outputPanel>
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputText value="Nombre:"/>
+                                    <h:outputText value="#{compra.miProducto.nombre}" style="font-weight:bold"/>
+                                    <h:outputText value="Fecha:"/>
+                                    <h:outputText value="#{compra.miCompra.fechaCreacion}"/>
+                                    <h:outputText value="Unidades:"/>
+                                    <h:outputText value="#{compra.unidades}"/>
+                                    <h:outputText value="Precio:"/>
+                                    <h:outputText value="#{compra.miProducto.precio * compra.unidades }"/>
+                                    <h:outputText value="Categorías:"/>
+                                    <h:outputText value="#{compra.miProducto.misCategorias}"/>
+
+                                </h:panelGrid>
+                            </p:outputPanel>
+                        </div>
+                        <div class="col-lg-2 col-md-1 align-self-center">
+                            <p:commandButton value="Ver detalle" styleClass="ui-button-raised"  icon="pi pi-arrow-right" iconPos="right" action="#{inicioBean.irADetelle(compra.miProducto.codigo)}"/>
+
+                        </div>
+                    </div>
+                </p:dataViewListItem>
+            </p:dataView>
+        </h:form>
+
 
     </ui:define>
 </ui:composition>

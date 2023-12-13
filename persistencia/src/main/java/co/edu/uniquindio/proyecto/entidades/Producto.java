@@ -31,8 +31,8 @@ public class Producto implements Serializable {
     @Column(nullable = false,length = 100)
     private String nombre;
 
-    @NotBlank
-    @Column(nullable = false)
+    @NotBlank(message = "La descripción del producto es obligatoria")
+    @Column(nullable = false, length = 1000)
     private String descripcion;
 
     @Positive

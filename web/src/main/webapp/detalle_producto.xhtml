@@ -6,148 +6,166 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      >
 <ui:composition template="WEB-INF/template.xhtml">
     <ui:define name="title">Detalle producto</ui:define>
 <ui:define name="content">
 
 
-        <div class="row">
-            <div class="col-12">
-                <h1 class="page-header">#{detalleProductoBean.producto.nombre}</h1>
-            </div>
-        </div>
 
-        <div class="row">
+    <div class="row">
+    </div>
 
-        </div>
-        <div class="row">
 
-            <div class="col-lg-6 mb-4">
-                <div class="card">
 
-                        <p:galleria rendered="#{detalleProductoBean.producto.misImagens.size() > 0}" value="#{detalleProductoBean.producto.misImagens}" var="imagen"   style="max-width: 640px" >
+    <!-- detal product two -->
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+
+                        <p:galleria rendered="#{detalleProductoBean.producto.misImagens.size() > 0}" value="#{detalleProductoBean.producto.misImagens}" var="imagen"   style="max-width: 540px" >
                             <p:graphicImage url="/uploads/#{imagen}" alt=""  style="width: 80%" />
                         </p:galleria>
                         <p:graphicImage rendered="#{detalleProductoBean.producto.misImagens.size() == 0}"  url="/uploads/default.jpg"/>
 
-                </div>
-            </div>
 
-            <div class="col-lg-5 col-md-1">
-                <div class="p-grid">
-                    <div class="">
-                        <h1 class="mt-4">#{detalleProductoBean.producto.nombre}</h1>
-                        <h1 class="mt-4">#{detalleProductoBean.producto.precio}</h1>
-                        <h1 class="mt-4">#{detalleProductoBean.producto.descripcion}</h1>
-                        <h:form class="mt-4" rendered="#{seguridadBean.autenticado}">
-                            <p:commandButton value="Añadir al carrito" icon="pi pi-shopping-cart" update="@form" action="#{seguridadBean.agregarProductocarrito(detalleProductoBean.producto.codigo,detalleProductoBean.producto.precio,detalleProductoBean.producto.nombre,detalleProductoBean.producto.imagenPrincipal)}"/>
-                            <p:growl for="add-cart" showDetail="true"/>
-                        </h:form>
-
+                    </div>
+                    <div class="col-md-6">
+                        <div class="small mb-1">SKU: BST-498</div>
+                        <h1 class="display-5 fw-bolder">#{detalleProductoBean.producto.nombre}</h1>
+                        <div class="fs-5 mb-5">
+                           <!-- <span class="text-decoration-line-through">$#{detalleProductoBean.producto.precio}</span> -->
+                            <span>$#{detalleProductoBean.producto.precio}</span>
+                        </div>
+                        <p class="lead">#{detalleProductoBean.producto.descripcion}</p>
+                        <div class="d-flex">
+                            <!--<input class="form-control text-center me-3" id="inputQuantit" type="num" value="1" style="max-width: 3rem" />
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to cart
+                            </button> -->
+                            <h:form class="mt-4" rendered="#{seguridadBean.autenticado}">
+                                <p:commandButton value="Añadir al carrito" icon="pi pi-shopping-cart" update="@form" action="#{seguridadBean.agregarProductocarrito(detalleProductoBean.producto.codigo,detalleProductoBean.producto.precio,detalleProductoBean.producto.nombre,detalleProductoBean.producto.imagenPrincipal)}"/>
+                                <p:growl for="add-cart" showDetail="true"/>
+                            </h:form>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
-
-        <h:form id="crear-comentario"  rendered="#{seguridadBean.autenticado}">
-            <h:panelGrid columns="2" cellpadding="3">
-                <p:inputTextarea value="#{detalleProductoBean.nuevoComentario.mensaje}"
-                                 required="true" styleClass="comentario-usuario" />
-
-            </h:panelGrid>
-            <p:commandButton value="Comentar" icon="pi pi-comment" iconPos="left" update="@form,
-            lista-c" styleClass="mt-4" action="#{detalleProductoBean.crearComentario}" />
-            <p:growl for="msj-pregunta" showDetail="true" />
-        </h:form>
-
-
-       <p:panel header="comentarios">
-         <p:dataList id="lista-c" value="#{detalleProductoBean.comentarios}" var="comentario" emptyMessage="No hay comentarios">
-         </p:dataList>
-       </p:panel>
+    </div>
 
 
 
 
-        <div class="container my-5 py-5 text-dark">
-            <div class="row d-flex justify-content-center">
-                <div>
-                    <div class="card">
-                        <div class="card-body p-4">
-                            <div class="d-flex flex-start w-100">
-                                <img class="rounded-circle shadow-1-strong me-3"
-                                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="65"
-                                     height="65" />
-                                <div class="w-100">
-                                    <h5>Add a comment</h5>
 
-                                    <div class="form-outline">
-                                        <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                                        <label class="form-label" for="textAreaExample">What is your view?</label>
-                                    </div>
-                                    <div class="d-flex justify-content-between mt-3">
-                                        <button type="button" class="btn btn-success">Danger</button>
-                                        <button type="button" class="btn btn-danger">
-                                            Send <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                                        </button>
-                                    </div>
+
+
+
+
+
+
+    <h:form id="crear-comentario"  rendered="#{seguridadBean.autenticado}">
+    <div class="container my-5 py-5 text-dark">
+        <div class="row d-flex justify-content-center">
+            <div>
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex flex-start w-100">
+                            <img class="rounded-circle shadow-1-strong me-3"
+                                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="65"
+                                 height="65" />
+                            <div class="w-100">
+                                <h5>Agregar comentario</h5>
+                                <div class="form-outline">
+                                    <p:inputTextarea id="textareacomentario" value="#{detalleProductoBean.nuevoComentario.mensaje}"
+                                                     required="true" styleClass="comentario-usuario"  style="width: 1152px" />
+
+                                    <label class="form-label" for="textareacomentario">What is your view?</label>
                                 </div>
+                                <div class="d-flex justify-content-between mt-3">
+
+                                    <p:commandButton value="Comentar" icon="pi pi-comment" iconPos="left" update="@form"
+                                                     styleClass="mt-md-3" action="#{detalleProductoBean.crearComentario}" />
+                                    <p:growl for="msj-pregunta" showDetail="true" />
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </h:form>
 
+   <!--
+    <p:panel header="comentarios">
+        <p:dataList id="lista-c" value="#{detalleProductoBean.comentarios}" var="comentario" emptyMessage="No hay comentarios">
+        </p:dataList>
+    </p:panel>
+    -->
 
+    <div class="container my-5 py-5 text-dark">
 
+            <div class="col-md-12  col-xl-8">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="text-dark mb-0">Comentarios (#{detalleProductoBean.comentarios.size()})</h4>
 
-        <div class="container my-5 py-5 text-dark">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-12  col-xl-8">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h4 class="text-dark mb-0">Comentarios (#{detalleProductoBean.comentarios.size()})</h4>
+                </div>
 
-                    </div>
+                <p:repeat value="#{detalleProductoBean.comentarios}" var="comentario" varStatus="c">
 
-                    <p:repeat value="#{detalleProductoBean.comentarios}" var="comentario" varStatus="c">
-                      <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="d-flex flex-start">
-                                <img class="rounded-circle shadow-1-strong me-3"
-                                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp" alt="avatar" width="40"
-                                     height="40" />
-                                <div class="w-100">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="text-primary fw-bold mb-0">
-                                            #{comentario.miUsuario.nombre}
-                                            <span class="text-dark ms-2">#{comentario.mensaje}</span>
-                                        </h6>
-                                        <p class="mb-0">#{comentario.fechaCreacion.toString()}</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
+                  <div id="lista-c" class="card mb-3" style="width: 1272px">
+                    <div class="card-body" >
+                        <div class="d-flex flex-start">
+                            <img class="rounded-circle shadow-1-strong me-3"
+                                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp" alt="avatar" width="40"
+                                 height="40" />
+                            <div class="w-100">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                        <div class="d-flex flex-row">
-                                            <i class="fas fa-star text-warning me-2"></i>
-                                            <i class="far fa-check-circle" style="color: #aaa;"></i>
-                                        </div>
+                                    <h6 class="text-primary fw-bold mb-0">
+                                        #{comentario.miUsuario.nombre}
+                                        <span class="text-dark ms-2">#{comentario.mensaje}</span>
+                                    </h6>
+                                    <p class="mb-0">#{comentario.fechaCreacion.toString()}</p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <div class="d-flex flex-row">
+                                        <i class="fas fa-star text-warning me-2"></i>
+                                        <i class="far fa-check-circle" style="color: #aaa;"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                      </div>
-                    </p:repeat>
+                    </div>
+                  </div>
+                </p:repeat>
 
-
-                </div>
             </div>
-        </div>
+
+    </div>
 
 
 
+
+
+
+    <!--
+    <div class="card">
+
+        <p:galleria rendered="#{detalleProductoBean.producto.misImagens.size() > 0}" value="#{detalleProductoBean.producto.misImagens}" var="imagen"   style="max-width: 640px" >
+            <p:graphicImage url="/uploads/#{imagen}" alt=""  style="width: 80%" />
+        </p:galleria>
+        <p:graphicImage rendered="#{detalleProductoBean.producto.misImagens.size() == 0}"  url="/uploads/default.jpg"/>
+
+    </div>
+    -->
 
 
 

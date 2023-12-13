@@ -26,20 +26,20 @@ public class SeguridadFilter implements Filter {
 
                 if (userManager != null) {
                     if (userManager.getAutenticado()) {
-//El usuario está logueado entonces si puede ver la página solicitada
+                    //El usuario está logueado entonces si puede ver la página solicitada
 
                         filterChain.doFilter(servletRequest, servletResponse);
                     } else {
-//El usuario no está logueado, entonces se redirecciona al inicio
+                    //El usuario no está logueado, entonces se redirecciona al inicio
 
                         response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
                     }
                 } else {
-//El usuario no está logueado, entonces se redirecciona al inicio
+                    //El usuario no está logueado, entonces se redirecciona al inicio
                     response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
                 }
             } else {
-//La página solicitada no está en la carpeta /usuario entonces el filtro no aplica
+                    //La página solicitada no está en la carpeta /usuario entonces el filtro no aplica
 
                 filterChain.doFilter(servletRequest, servletResponse);
             }

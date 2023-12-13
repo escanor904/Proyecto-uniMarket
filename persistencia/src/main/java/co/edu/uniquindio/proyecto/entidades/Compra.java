@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -40,6 +37,7 @@ public class Compra implements Serializable {
 
     @OneToMany(mappedBy = "miCompra")
     private List<DetalleCompra> misDetalleCompras=new ArrayList<>();
+
 
 
     public Compra( LocalDate fechaCreacion, MedioDePago medioDePago, Usuario miUsuario) {

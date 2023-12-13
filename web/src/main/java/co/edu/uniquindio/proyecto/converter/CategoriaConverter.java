@@ -18,8 +18,8 @@ public class CategoriaConverter implements Converter<Categoria>, Serializable {
 
     @Override
     public Categoria getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
-        //dado el id de la categoria devuelve el objeto
 
+        //dado el id de la categoria devuelve el objeto
         Categoria categoria= null;
 
         try {
