@@ -24,6 +24,28 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <name>Proyecto Padre</name>
     <description>Proyecto que agrupa todos los módulos correspondientes al  aplicativo</description>
 
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>co.edu.uniquindio.proyecto.WebApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
     <properties>
         <java.version>11</java.version>
     </properties>
